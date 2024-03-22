@@ -1,23 +1,9 @@
 package aula6;
 
-import java.util.Scanner;
+// metodo menu foi movido para classe InteracaoUsuario.java, onde os metodos serao utilizados.
 
 public class CalculadoraSimples {
-	private Scanner input;
-	
-	public int menu() {
-		Scanner input = new Scanner(System.in);
-		
-		System.out.println("*-- Menu --*");
-		System.out.println("1 - Adição");
-		System.out.println("2 - Subtração");
-		System.out.println("3 - Multiplicação");
-		System.out.println("4 - Divisão");
-		System.out.println("Opção: ");
-		int op = input.nextInt();
-		return op;
-	}
-	
+
 	public float add(float n1, float n2) {
 		System.out.println("*-* Adição *-*");
 		return n1 + n2;
