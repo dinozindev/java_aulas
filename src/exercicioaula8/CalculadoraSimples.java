@@ -7,6 +7,7 @@ public class CalculadoraSimples {
 	private Scanner input;
 	private float n1;
 	private float n2;
+	private int op;
 	
 	public float getN1() {
 		return n1;
@@ -26,19 +27,17 @@ public class CalculadoraSimples {
 
 
 	public int menu() {
-		input = new Scanner(System.in);
-		System.out.println("====== { MENU } ======");
-		System.out.println("1 - Adição");
-		System.out.println("2 - Subtração");
-		System.out.println("3 - Multiplicação");
-		System.out.println("4 - Divisão");
-		System.out.println("Escolha uma das opções: ");
-		int op = input.nextInt();
-		while (op < 1 || op > 4) {
-			System.out.println("Escolha uma opção válida.\n");
+		do {
+			input = new Scanner(System.in);
+			System.out.println("====== { MENU } ======");
+			System.out.println("1 - Adição");
+			System.out.println("2 - Subtração");
+			System.out.println("3 - Multiplicação");
+			System.out.println("4 - Divisão");
 			System.out.println("Escolha uma das opções: ");
-			op = input.nextInt();
-		} 
+			this.op = input.nextInt();	
+		} while (op < 1 || op > 4);
+		
 		System.out.println("Valor 1: ");
 		setN1(input.nextFloat());
 		System.out.println("Valor 2: ");
