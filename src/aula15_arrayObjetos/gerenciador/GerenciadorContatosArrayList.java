@@ -1,6 +1,7 @@
 package aula15_arrayObjetos.gerenciador;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import aula15_arrayObjetos.model.Contato;
 
@@ -16,6 +17,7 @@ import aula15_arrayObjetos.model.Contato;
 public class GerenciadorContatosArrayList {
 	// atributos
 	private ArrayList<Contato> contatos; // declarando um arrayList
+	private Scanner input;
 	
 	// constructor
 	public GerenciadorContatosArrayList() {
@@ -55,4 +57,32 @@ public class GerenciadorContatosArrayList {
 			System.out.println(contato.toString());
 		}
 	}
+	
+	public Contato criarContato() {
+		input = new Scanner(System.in);
+		System.out.println("*-* Criando Contato *-*");
+		System.out.println("Nome: ");
+		String nome = input.next();
+		System.out.println("Telefone: ");
+		String tel = input.next();
+		Contato contato = new Contato(nome, tel);
+		return contato;	
+	}
+	
+	public Contato atualizarContato(Contato contato) {
+		input = new Scanner(System.in);
+		System.out.println("*-* Atualizando Contato *-*");
+		System.out.println("Novo nome: ");
+		contato.setNome(input.next());
+		System.out.println("Novo telefone: ");
+		contato.setTelefone(input.next());
+		return contato;
+	}
+	
+	/**
+	 * 
+	 * To do
+	 * - criar um metodo para criar um contato
+	 * - criar um metodo para atualizar um contato
+	 */
 }
