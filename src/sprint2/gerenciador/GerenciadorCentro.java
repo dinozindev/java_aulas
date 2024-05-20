@@ -29,4 +29,14 @@ public class GerenciadorCentro {
             System.out.println("Horário de funcionamento: " + centroAutomotivo.getHorarioFuncionamento() + "\n");                   
         }
     }
+    
+    public CentroAutomotivo retornaCentro(String nomeCentro) {
+        for (CentroAutomotivo centroAutomotivo : centrosAutomotivos) {
+            if (centroAutomotivo.getNomeCentro().equalsIgnoreCase(nomeCentro)) {
+                return centroAutomotivo;
+            }
+        }
+
+        return null;
+    }
 }

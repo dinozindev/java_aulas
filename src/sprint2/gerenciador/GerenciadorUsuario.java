@@ -3,6 +3,8 @@ package sprint2.gerenciador;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import sprint2.model.Usuario;
 import sprint2.model.Veiculo;
@@ -18,16 +20,38 @@ public class GerenciadorUsuario {
     }
 
     public Usuario cadastrar() {
+    	Pattern patternEmail = Pattern.compile("^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    	String email;
+    	Pattern patternTel = Pattern.compile("^(\\(\\d{2}\\)\\s*\\d{5}-\\d{4})|^(\\d{2}\\s*\\d{5}-\\d{4})$");
+    	String telefone;
+    	
     	System.out.println("\n*-* CADASTRO USUÁRIO *-*");
-        System.out.print("Digite o nome de usuário: ");
+        System.out.print("Digite o nome: ");
         String nomeUsuario = scanner.nextLine();
         System.out.print("Digite a senha: ");
         String senha = scanner.nextLine();
-        System.out.print("Digite o email: ");
-        String email = scanner.nextLine();
-        System.out.print("Digite o telefone: ");
-        String telefone = scanner.nextLine();
-
+        while (true) {
+        	System.out.print("Digite o email: ");
+            email = scanner.nextLine();
+            Matcher matcher = patternEmail.matcher(email);
+            if (matcher.matches()) {
+            	break;
+            } else {
+            	System.out.println("E-mail inválido.");
+            	continue;
+            }
+        }
+        while (true) {
+        	System.out.print("Digite o telefone: ");
+            telefone = scanner.nextLine();
+            Matcher matcher = patternTel.matcher(telefone);
+            if (matcher.matches()) {
+            	break;
+            } else {
+            	System.out.println("Telefone inválido.");
+            	continue;
+            }
+        }
         Usuario usuario = new Usuario(nomeUsuario, senha, email, telefone);
         usuarios.add(usuario);
         System.out.println("\nUsuário cadastrado com sucesso!");

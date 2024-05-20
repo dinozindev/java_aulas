@@ -11,10 +11,12 @@ public class Agendamento {
 		
 	}
 
-    public Agendamento(String data, String hora, String descricao) {
+    public Agendamento(String data, String hora, String descricao, CentroAutomotivo centro, Servico servico) {
         this.data = data;
         this.hora = hora;
         this.descricao = descricao;
+        this.centro = centro;
+        this.servico = servico;
     }
 
     public String getData() {

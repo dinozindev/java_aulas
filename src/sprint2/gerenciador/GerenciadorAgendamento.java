@@ -16,43 +16,12 @@ public class GerenciadorAgendamento {
         this.agendamentos = new ArrayList<Agendamento>();
     }
 
-
-    public List<Agendamento> getAgendamentos() {
-        return agendamentos;
-    }
-
-    public void setAgendamentos(List<Agendamento> agendamentos) {
-        this.agendamentos = agendamentos;
-    }
-
     public Agendamento realizarAgendamento() {
     	scanner = new Scanner(System.in);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        System.out.println("Datas disponíveis:");
-        List<LocalDate> datasDisponiveis = new ArrayList<LocalDate>();
-        for (Agendamento agendamento : agendamentos) {
-            LocalDate data = LocalDate.parse(agendamento.getData(), formatter);
-            if (!datasDisponiveis.contains(data)) {
-                datasDisponiveis.add(data);
-            }
-        }
-        for (LocalDate data : datasDisponiveis) {
-            System.out.println(data.format(formatter));
-        }
-
-        System.out.println("Digite a data desejada (dd/mm/yyyy):");
-        String dataEscolhida = scanner.nextLine();
-        LocalDate data = LocalDate.parse(dataEscolhida, formatter);
-
-        if (verificarDataDisponivel(data)) {
-            Agendamento agendamento = new Agendamento(dataEscolhida, "08:00", "Novo agendamento");
-            agendamentos.add(agendamento);
-            System.out.println("Agendamento realizado com sucesso!");
-            return agendamento;
-        } else {
-            System.out.println("Data não disponível. Agendamento não realizado.");
-        }
+    	while(true) {
+    		System.out.println("Qual a data do agendamento (ex: dd/MM/yyyy)?: ");
+    		scanner.next();
+    	}
     }
     
     public boolean verificarDataDisponivel(LocalDate data) {
