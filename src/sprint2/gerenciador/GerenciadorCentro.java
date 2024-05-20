@@ -8,7 +8,7 @@ public class GerenciadorCentro {
     private List<CentroAutomotivo> centrosAutomotivos;
 
     public GerenciadorCentro() {
-        this.centrosAutomotivos = new ArrayList<>();
+        this.centrosAutomotivos = new ArrayList<CentroAutomotivo>();
     }
 
     public void adicionarUnidade(CentroAutomotivo centroAutomotivo) {
@@ -16,7 +16,7 @@ public class GerenciadorCentro {
     }
 
     public void listarUnidades() {
-        System.out.println("Lista de unidades:");
+        System.out.println("\n*-* LISTA DE UNIDADES *-*\n");
         for (CentroAutomotivo centroAutomotivo : this.centrosAutomotivos) {
             System.out.println("ID: " + centroAutomotivo.getIdUnidade() +
             		" Nome do Centro: " + centroAutomotivo.getNomeCentro() +

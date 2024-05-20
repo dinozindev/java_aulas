@@ -14,7 +14,7 @@ public class GerenciadorVeiculo {
 
     }
     
-    public Veiculo criarVeiculo(Usuario usuario) {
+    public Veiculo criarVeiculo() {
     	System.out.println("\n*-* CRIANDO VEÍCULO *-*\n");
     	scanner = new Scanner(System.in);
         System.out.print("Digite a marca do veículo: ");

@@ -33,21 +33,24 @@ public class GerenciadorUsuario {
     }
 
     public void login() {
-    	System.out.println("\n*-* LOGIN USUÁRIO *-*");
-        System.out.print("Digite o nome de usuário: ");
-        String nomeUsuario = scanner.nextLine();
-        System.out.print("Digite a senha: ");
-        String senha = scanner.nextLine();
+    	do {
+    		System.out.println("\n*-* LOGIN USUÁRIO *-*");
+            System.out.print("Digite o nome de usuário: ");
+            String nomeUsuario = scanner.nextLine();
+            System.out.print("Digite a senha: ");
+            String senha = scanner.nextLine();
 
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNomeUsuario().equals(nomeUsuario) && usuario.getSenha().equals(senha)) {
-                System.out.println("\nLogin realizado com sucesso!");
-                return;
+            for (Usuario usuario : usuarios) {
+                if (usuario.getNomeUsuario().equals(nomeUsuario) && usuario.getSenha().equals(senha)) {
+                    System.out.println("\nLogin realizado com sucesso!");
+                    return;
+                } else {
+                	System.out.println("\nUsuário ou senha inválidos.");
+                	continue;
+                }
             }
-        }
-
-        System.out.println("Usuário ou senha inválidos.");
-
+    	}	while (true);
+    	
     }
     
     public void adicionarVeiculoAoUsuario(Veiculo veiculo, Usuario usuario) {

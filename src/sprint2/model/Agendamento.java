@@ -7,7 +7,9 @@ public class Agendamento {
     private CentroAutomotivo centro;
     private Servico servico;
 
-	public Agendamento() {}
+	public Agendamento() {
+		
+	}
 
     public Agendamento(String data, String hora, String descricao, CentroAutomotivo centro, Servico servico) {
         this.data = data;

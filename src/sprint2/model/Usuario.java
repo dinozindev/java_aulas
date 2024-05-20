@@ -49,16 +49,16 @@ public class Usuario {
         this.veiculos = veiculos;
     }
     
-	public String toString() {
-		return "Usuario [nomeUsuario=" + nomeUsuario + ", senha=" + senha + ", email=" + email + "]";
-	}
-
-	public Agendamento getAgendamento() {
+    public Agendamento getAgendamento() {
 		return agendamento;
 	}
 
 	public void setAgendamento(Agendamento agendamento) {
 		this.agendamento = agendamento;
+	}
+    
+	public String toString() {
+		return "Usuario [nomeUsuario=" + nomeUsuario + ", senha=" + senha + ", email=" + email + "]";
 	}
 
 	public void listarVeiculos() {

@@ -18,9 +18,6 @@ public class GerenciadorAgendamento {
     public void realizarAgendamento() {
         Scanner scanner = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        System.out.println("Datas disponíveis:");
-        List<LocalDate> datasDisponiveis = new ArrayList<>();
         for (Agendamento agendamento : agendamentos) {
             LocalDate data = LocalDate.parse(agendamento.getData(), formatter);
             if (!datasDisponiveis.contains(data)) {
@@ -43,6 +40,7 @@ public class GerenciadorAgendamento {
             System.out.println("Data não disponível. Agendamento não realizado.");
         }
     }
+    
 
     public boolean verificarDataDisponivel(LocalDate data) {
         for (Agendamento agendamento : agendamentos) {

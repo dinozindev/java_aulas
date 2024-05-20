@@ -6,6 +6,8 @@ import sprint2.gerenciador.GerenciadorAgendamento;
 import sprint2.gerenciador.GerenciadorCentro;
 import sprint2.gerenciador.GerenciadorServico;
 import sprint2.gerenciador.GerenciadorFuncionario;
+import sprint2.gerenciador.GerenciadorOrcamento;
+import sprint2.gerenciador.GerenciadorPecas;
 import sprint2.gerenciador.GerenciadorUsuario;
 import sprint2.gerenciador.GerenciadorVeiculo;
 import sprint2.model.Agendamento;
@@ -13,6 +15,8 @@ import sprint2.model.Cargo;
 import sprint2.model.CentroAutomotivo;
 import sprint2.model.Servico;
 import sprint2.model.Funcionario;
+import sprint2.model.Orcamento;
+import sprint2.model.Peca;
 import sprint2.model.Usuario;
 import sprint2.model.Veiculo;
 
@@ -51,6 +55,19 @@ public class MainTeste {
         gerenciadorCentro.adicionarUnidade(centroAutomotivo2);
         gerenciadorCentro.listarUnidades();
         
+        // cria peça, adiciona na lista e imprime
+        Peca peca1 = new Peca(112, true, "Filtro de Cabine", 69.99);
+        Peca peca2 = new Peca(113, true, "Disco de pastilha traseiro", 39.99);
+        GerenciadorPecas gerenciadorPecas = new GerenciadorPecas();
+        gerenciadorPecas.adicionarPeca(peca1);
+        gerenciadorPecas.adicionarPeca(peca2);
+        gerenciadorPecas.listarPecas();
+        
+        // cria orcamento
+        Orcamento orcamento1 = new Orcamento(000001, "Orçamento gerado", "Ativo");
+        GerenciadorOrcamento gerenciadorOrcamento = new GerenciadorOrcamento(orcamento1);
+        gerenciadorOrcamento.gerarOrcamento(servico1, peca2);
+        
         
         // criando um usuario novo e logando
         GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario();
@@ -59,28 +76,16 @@ public class MainTeste {
         
         // criando e adicionando um veiculo novo para o usuario
         GerenciadorVeiculo gerenciadorVeiculo = new GerenciadorVeiculo();
-        Veiculo veiculo1 = gerenciadorVeiculo.criarVeiculo(usuario1);
+        Veiculo veiculo1 = gerenciadorVeiculo.criarVeiculo();
         gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo1, usuario1);
-        Veiculo veiculo2 = gerenciadorVeiculo.criarVeiculo(usuario1);
+        Veiculo veiculo2 = gerenciadorVeiculo.criarVeiculo();
         gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo2, usuario1);
         
         // imprime lista de veículos do usuário
         usuario1.listarVeiculos();
-      
-        
-        
-        
         
         GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
         
-       
-        
-        
-        
-        
-        
-
-        Scanner scanner = new Scanner(System.in);
 
     }
 }
