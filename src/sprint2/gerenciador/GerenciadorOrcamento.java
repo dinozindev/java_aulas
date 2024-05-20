@@ -1,8 +1,6 @@
 package sprint2.gerenciador;
 
 import sprint2.model.Orcamento;
-import sprint2.model.Peca;
-import sprint2.model.Servico;
 
 public class GerenciadorOrcamento {
 	private Orcamento orcamento;
@@ -11,14 +9,16 @@ public class GerenciadorOrcamento {
 		this.orcamento = orcamento;
 	}
 	
-	public void gerarOrcamento(Servico servico, Peca peca) {
-		double total = servico.getPreco() + peca.getPrecoPeca();
+	public void gerarOrcamento() {
+		double total = orcamento.getServico().getPreco() + orcamento.getPeca().getPrecoPeca();
 		orcamento.setValor_total(total);
-		
+	}
+	
+	public void imprimirOrcamento() {
 		System.out.println("\n*-* ORÇAMENTO *-*\n");
-		System.out.println("Valor serviço: " + servico.getPreco());
-		System.out.println("Valor peça: " + peca.getPrecoPeca());
-		System.out.println("Valor total: " + total);
+		System.out.println("Valor serviço: " + orcamento.getServico().getPreco());
+		System.out.println("Valor peça: " + orcamento.getPeca().getPrecoPeca());
+		System.out.println("Valor total: " + orcamento.getValor_total());
 	}
 	
 	

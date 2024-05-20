@@ -1,23 +1,26 @@
 package sprint2.model;
 
 public class Funcionario {
-    private String matricula;
+    private int matricula;
     private String nome;
     private Cargo cargo;
     private CentroAutomotivo centroAutomotivo;
+    private boolean disponibilidade;
 
-    public Funcionario(String matricula, String nome, Cargo cargo, CentroAutomotivo centroAutomotivo) {
+    public Funcionario(int matricula, String nome, Cargo cargo, CentroAutomotivo centroAutomotivo, boolean disponibilidade) {
         this.matricula = matricula;
         this.nome = nome;
         this.cargo = cargo;
         this.centroAutomotivo = centroAutomotivo;
+        this.disponibilidade = disponibilidade;
     }
 
-    public String getMatricula() {
+
+	public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
@@ -44,6 +47,14 @@ public class Funcionario {
     public void setCentroAutomotivo(CentroAutomotivo centroAutomotivo) {
         this.centroAutomotivo = centroAutomotivo;
     }
+    
+    public boolean isDisponibilidade() {
+		return disponibilidade;
+	}
+
+	public void setDisponibilidade(boolean disponibilidade) {
+		this.disponibilidade = disponibilidade;
+	}
 
 	public String toString() {
 		return "Funcionário [matricula=" + matricula + ", nome=" + nome + ", cargo=" + cargo

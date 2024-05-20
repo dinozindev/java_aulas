@@ -1,21 +1,53 @@
 package sprint2.gerenciador;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sprint2.model.Cargo;
 import sprint2.model.CentroAutomotivo;
 import sprint2.model.Funcionario;
 
 public class GerenciadorFuncionario {
-    private Funcionario funcionario;
+    private List<Funcionario> funcionarios;
 
-    public GerenciadorFuncionario(Funcionario funcionario) {
-    	this.funcionario = funcionario;
+    public GerenciadorFuncionario() {
+    	this.funcionarios = new ArrayList<Funcionario>();
     }
 
-    public void alterarCargo(Cargo novoCargo) {
-        this.funcionario.setCargo(novoCargo);
-    }
+    public void alterarCargo(Funcionario funcionario, Cargo novoCargo) {
+    	funcionario.setCargo(novoCargo);
+    }	
 
-    public void alterarCentroAutomotivo(CentroAutomotivo novoCentroAutomotivo) {
-        this.funcionario.setCentroAutomotivo(novoCentroAutomotivo);
+    public void alterarCentroAutomotivo(Funcionario funcionario, CentroAutomotivo novoCentroAutomotivo) {
+        funcionario.setCentroAutomotivo(novoCentroAutomotivo);
     }
+    
+    public void alterarDisponibilidade(Funcionario funcionario) {
+    	if(funcionario.isDisponibilidade() == true) {
+    		funcionario.setDisponibilidade(false);
+    	} else {
+    		funcionario.setDisponibilidade(true);
+    	}
+    }
+    
+    public void adicionarFuncionario(Funcionario funcionario) {
+    	funcionarios.add(funcionario);
+    }
+    
+    public void removerFuncionario(Funcionario funcionario) {
+    	funcionarios.remove(funcionario);
+    }
+    
+    public void listarFuncionarios() {
+    	System.out.println("\n*-* LISTA DE FUNCIONÁRIOS *-*\n");
+    	for (Funcionario funcionario : funcionarios) {
+    		System.out.println("Matrícula: " + funcionario.getMatricula());
+    		System.out.println("Nome: " + funcionario.getNome());
+    		System.out.println("Cargo: " + funcionario.getCargo().getNomeCargo());
+    		System.out.println("Área do Cargo: " + funcionario.getCargo().getAreaCargo());
+    		System.out.println("Oficina: " + funcionario.getCentroAutomotivo().getNomeCentro());
+    		System.out.println("Disponibilidade: " + (funcionario.isDisponibilidade() == true ? "Disponível" : "Indisponível") + "\n");
+    	}
+    }
+    
 }

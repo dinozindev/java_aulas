@@ -25,8 +25,10 @@ public class GerenciadorUsuario {
         String senha = scanner.nextLine();
         System.out.print("Digite o email: ");
         String email = scanner.nextLine();
+        System.out.print("Digite o telefone: ");
+        String telefone = scanner.nextLine();
 
-        Usuario usuario = new Usuario(nomeUsuario, senha, email);
+        Usuario usuario = new Usuario(nomeUsuario, senha, email, telefone);
         usuarios.add(usuario);
         System.out.println("\nUsuário cadastrado com sucesso!");
         return usuario;
@@ -55,15 +57,34 @@ public class GerenciadorUsuario {
     
     public void adicionarVeiculoAoUsuario(Veiculo veiculo, Usuario usuario) {
     	usuario.getVeiculos().add(veiculo);
-    	System.out.println("Veículo adicionado com sucesso.");
+    	System.out.println("\nVeículo adicionado com sucesso.");
     }
     
     public void removerVeiculoDoUsuario(Veiculo veiculo, Usuario usuario) {
     	usuario.getVeiculos().remove(veiculo);
-    	System.out.println("Veículo removido com sucesso.");
+    	System.out.println("\nVeículo removido com sucesso.");
     }
+    
+    public void removerUsuario(Usuario usuario) {
+    	usuarios.remove(usuario);
+    }
+    
+    public void imprimirUsuarios() {
+    	System.out.println("\n*-* LISTA DE USUÁRIOS *-*\n");
+    	for (Usuario usuario : usuarios) {
+    		System.out.println("Nome: " + usuario.getNomeUsuario());
+    		System.out.println("E-mail: " + usuario.getEmail());
+    		System.out.println("Telefone: " + usuario.getTelefone() + "\n");
+    	}
+    }
+    
+    public void listarVeiculosDoUsuario(Usuario usuario) {
+		System.out.println("\n*-* VEÍCULOS DO USUÁRIO " + usuario.getNomeUsuario().toUpperCase() + " *-*\n");
+    for (Veiculo veiculo : usuario.getVeiculos()) {
+        System.out.println(veiculo.getMarca() + " " + veiculo.getModelo() + " (" + veiculo.getAno() + ", " + veiculo.getPlaca() + ", " + veiculo.getQuilometragem() + ")");
+    }
+}
    
-
     public Usuario getUsuarioLogado() { // add this method
         return usuarioLogado;
     }

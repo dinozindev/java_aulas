@@ -7,13 +7,15 @@ public class Usuario {
     private String nomeUsuario;
     private String senha;
     private String email;
+    private String telefone;
     private ArrayList<Veiculo> veiculos;
     private Agendamento agendamento;
     
-    public Usuario(String nomeUsuario, String senha, String email) {
+    public Usuario(String nomeUsuario, String senha, String email, String telefone) {
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.email = email;
+        this.telefone = telefone;
         this.veiculos = new ArrayList<Veiculo>();
     }
 
@@ -40,6 +42,14 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 
     public ArrayList<Veiculo> getVeiculos() {
         return veiculos;
@@ -56,15 +66,10 @@ public class Usuario {
 	public void setAgendamento(Agendamento agendamento) {
 		this.agendamento = agendamento;
 	}
-    
+	
+
 	public String toString() {
 		return "Usuario [nomeUsuario=" + nomeUsuario + ", senha=" + senha + ", email=" + email + "]";
 	}
 
-	public void listarVeiculos() {
-    		System.out.println("\n*-* VEÍCULOS DO USUÁRIO " + nomeUsuario.toUpperCase() + " *-*\n");
-        for (Veiculo veiculo : veiculos) {
-            System.out.println(veiculo.getMarca() + " " + veiculo.getModelo() + " (" + veiculo.getAno() + ", " + veiculo.getPlaca() + ")");
-        }
-    }
 }

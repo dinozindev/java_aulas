@@ -14,15 +14,19 @@ public class GerenciadorCentro {
     public void adicionarUnidade(CentroAutomotivo centroAutomotivo) {
         this.centrosAutomotivos.add(centroAutomotivo);
     }
+    
+    public void removerUnidade(CentroAutomotivo centroAutomotivo) {
+    	this.centrosAutomotivos.remove(centroAutomotivo);
+    }
 
     public void listarUnidades() {
         System.out.println("\n*-* LISTA DE UNIDADES *-*\n");
         for (CentroAutomotivo centroAutomotivo : this.centrosAutomotivos) {
-            System.out.println("ID: " + centroAutomotivo.getIdUnidade() +
-            		" Nome do Centro: " + centroAutomotivo.getNomeCentro() +
-                    " Endereço: " + centroAutomotivo.getEndereco() +
-                    " Telefone: " + centroAutomotivo.getTelefone() +
-                    " Horário de funcionamento: " + centroAutomotivo.getHorarioFuncionamento());
+            System.out.println("ID: " + centroAutomotivo.getIdUnidade());
+            System.out.println("Nome do Centro: " + centroAutomotivo.getNomeCentro());
+            System.out.println("Endereço: " + centroAutomotivo.getEndereco());
+            System.out.println("Telefone: " + centroAutomotivo.getTelefone());
+            System.out.println("Horário de funcionamento: " + centroAutomotivo.getHorarioFuncionamento() + "\n");                   
         }
     }
 }

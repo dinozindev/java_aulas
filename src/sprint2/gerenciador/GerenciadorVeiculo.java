@@ -1,17 +1,15 @@
 package sprint2.gerenciador;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import sprint2.model.Usuario;
 import sprint2.model.Veiculo;
 import java.util.Scanner;
 
 public class GerenciadorVeiculo {
-    private Scanner scanner;
-
+	private ArrayList<Veiculo> veiculosTotais;
+	private Scanner scanner;
+    
     public GerenciadorVeiculo() {
-
+    	this.veiculosTotais = new ArrayList<Veiculo>();
     }
     
     public Veiculo criarVeiculo() {
@@ -30,14 +28,26 @@ public class GerenciadorVeiculo {
         double quilometragem = scanner.nextDouble();
 
         Veiculo veiculo = new Veiculo(marca, modelo, ano, placa, quilometragem);
+        veiculosTotais.add(veiculo);
         System.out.println("\nVeículo criado com sucesso!");
         return veiculo;
         
     }
+    
+    public void removerVeiculoDosCadastrados(Veiculo veiculo) {
+    	veiculosTotais.remove(veiculo);
+    }
+    
+    public void listarVeiculosCadastrados() {
+    	System.out.println("*-* VEÍCULOS CADASTRADOS *-*");
+    	for (Veiculo veiculo: veiculosTotais) {
+    		System.out.println(veiculo.getMarca() + " " + veiculo.getModelo() + " (" + veiculo.getAno() + ", " + veiculo.getPlaca() + ", " + veiculo.getQuilometragem() + ")");
+    	}
+    }
 
-    public List<Veiculo> buscarVeiculosPorModelo(String modelo, Usuario usuario) {
-        List<Veiculo> veiculosEncontrados = new ArrayList<>();
-        for (Veiculo veiculo : usuario.getVeiculos()) {
+    public ArrayList<Veiculo> buscarVeiculosPorModelo(String modelo) {
+        ArrayList<Veiculo> veiculosEncontrados = new ArrayList<>();
+        for (Veiculo veiculo : veiculosTotais) {
             if (veiculo.getModelo().equalsIgnoreCase(modelo)) {
                 veiculosEncontrados.add(veiculo);
             }

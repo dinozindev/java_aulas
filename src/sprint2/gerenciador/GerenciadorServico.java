@@ -1,17 +1,16 @@
 package sprint2.gerenciador;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import sprint2.model.Servico;
 
 public class GerenciadorServico {
     // Atributos
-    private List<Servico> servicos;
+    private ArrayList<Servico> servicos;
 
     // Construtor
     public GerenciadorServico() {
-        this.servicos = new ArrayList<>();
+        this.servicos = new ArrayList<Servico>();
 
         this.servicos.add(new Servico("Mecânica", "Troca de óleo", 100.0, 30));
         this.servicos.add(new Servico("Mecânica", "Troca de pneus", 300.0, 60));
@@ -22,11 +21,25 @@ public class GerenciadorServico {
     }
 
     // Métodos
-    public List<Servico> getServicos() {
-        return this.servicos;
+    public void adicionarServico(Servico servico) {
+    	servicos.add(servico);
+    }
+    
+    public void removerServico(Servico servico) {
+    	servicos.remove(servico);
+    }
+    
+    public void listarServicos() {
+    	System.out.println("\n*-* LISTA DE SERVIÇOS *-*\n");
+        for (Servico servico: servicos) {
+        	System.out.println("Tipo do serviço: " + servico.getTipo());
+        	System.out.println("Descrição: " + servico.getDescricao());
+        	System.out.println("Preço: R$" + servico.getPreco());
+        	System.out.println("Duração estimada: " + servico.getDuracaoEstimada() + " minutos\n");
+        }
     }
 
-    public Servico getServico(String descricao) {
+    public Servico retornaServico(String descricao) {
         for (Servico servico : this.servicos) {
             if (servico.getDescricao().equalsIgnoreCase(descricao)) {
                 return servico;

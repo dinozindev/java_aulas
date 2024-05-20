@@ -11,14 +11,17 @@ public class GerenciadorPecas {
 		this.pecas = new ArrayList<Peca>();
 	}
 	
-	public void alterarDisponibilidade(Peca peca, boolean disponibilidade) {
-		peca.setDisponibilidade(disponibilidade);
-		System.out.println("Disponibilidade da peça " + peca.getNomePeca() + " alterada com sucesso.");
+	public void alterarDisponibilidadePeca(Peca peca) {
+		if (peca.isDisponibilidadePeca() == true) {
+			peca.setDisponibilidadePeca(false);
+		} else {
+			peca.setDisponibilidadePeca(true);
+		}
 	}
 	
 	public void adicionarPeca(Peca peca) {
 		pecas.add(peca);
-		// System.out.println("Peça adicionada com sucesso.");
+		System.out.println("Peça adicionada com sucesso.");
 	}
 	
 	public void removerPeca(Peca peca) {
@@ -29,7 +32,18 @@ public class GerenciadorPecas {
 	public void listarPecas() {
 		System.out.println("\n*-* LISTA DE PEÇAS *-*\n");
 		for (Peca peca : this.pecas) {
-			System.out.println(peca.toString());
+			System.out.println("ID: " + peca.getIdPeca());
+			System.out.println("Nome: " + peca.getNomePeca());
+			System.out.println("Preço: R$" + peca.getPrecoPeca());
+			System.out.println("Disponibilidade: " + (peca.isDisponibilidadePeca() == true ? "Disponível" : "Indisponível") + "\n");
+		}
+	}
+	
+	public void consultarDisponibilidadePeca(Peca pecaSolicitada) {
+		if (pecaSolicitada.isDisponibilidadePeca() == true) {
+			System.out.println("A peça " + pecaSolicitada.getNomePeca() + " está disponível.");
+		} else {
+			System.out.println("A peça " + pecaSolicitada.getNomePeca() + " está indisponível.");
 		}
 	}
 }

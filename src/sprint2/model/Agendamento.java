@@ -11,12 +11,10 @@ public class Agendamento {
 		
 	}
 
-    public Agendamento(String data, String hora, String descricao, CentroAutomotivo centro, Servico servico) {
+    public Agendamento(String data, String hora, String descricao) {
         this.data = data;
         this.hora = hora;
         this.descricao = descricao;
-        this.centro = centro;
-        this.servico = servico;
     }
 
     public String getData() {
@@ -57,5 +55,10 @@ public class Agendamento {
 
 	public void setServico(Servico servico) {
 		this.servico = servico;
+	}
+
+	public String toString() {
+		return "Agendamento [data=" + data + ", hora=" + hora + ", descricao=" + descricao + ", centro=" + centro
+				+ ", servico=" + servico + "]";
 	}
 }

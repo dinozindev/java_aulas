@@ -2,13 +2,13 @@ package sprint2.model;
 
 public class Peca {
 	private int idPeca;
-	private boolean disponibilidade;
+	private boolean disponibilidadePeca;
 	private String nomePeca;
 	private double precoPeca;
 	
-	public Peca(int idPeca, boolean disponibilidade, String nomePeca, double precoPeca) {
+	public Peca(int idPeca, boolean disponibilidadePeca, String nomePeca, double precoPeca) {
 		this.idPeca = idPeca;
-		this.disponibilidade = disponibilidade;
+		this.disponibilidadePeca = disponibilidadePeca;
 		this.nomePeca = nomePeca;
 		this.precoPeca = precoPeca;
 	}
@@ -21,12 +21,12 @@ public class Peca {
 		this.idPeca = idPeca;
 	}
 
-	public boolean getDisponibilidade() {
-		return disponibilidade;
+	public boolean isDisponibilidadePeca() {
+		return disponibilidadePeca;
 	}
 
-	public void setDisponibilidade(boolean disponibilidade) {
-		this.disponibilidade = disponibilidade;
+	public void setDisponibilidadePeca(boolean disponibilidadePeca) {
+		this.disponibilidadePeca = disponibilidadePeca;
 	}
 
 	public String getNomePeca() {
@@ -46,7 +46,7 @@ public class Peca {
 	}
 
 	public String toString() {
-		return "Peca [idPeca=" + idPeca + ", disponibilidade=" + disponibilidade + ", nomePeca=" + nomePeca
+		return "Peca [idPeca=" + idPeca + ", disponibilidadePeca=" + disponibilidadePeca + ", nomePeca=" + nomePeca
 				+ ", precoPeca=" + precoPeca + "]";
 	}
 }

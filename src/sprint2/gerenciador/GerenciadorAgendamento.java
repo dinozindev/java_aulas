@@ -10,14 +10,27 @@ import sprint2.model.Agendamento;
 
 public class GerenciadorAgendamento {
     private List<Agendamento> agendamentos;
+    private Scanner scanner;
     
     public GerenciadorAgendamento() {
         this.agendamentos = new ArrayList<Agendamento>();
     }
 
-    public void realizarAgendamento() {
-        Scanner scanner = new Scanner(System.in);
+
+    public List<Agendamento> getAgendamentos() {
+        return agendamentos;
+    }
+
+    public void setAgendamentos(List<Agendamento> agendamentos) {
+        this.agendamentos = agendamentos;
+    }
+
+    public Agendamento realizarAgendamento() {
+    	scanner = new Scanner(System.in);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.println("Datas disponíveis:");
+        List<LocalDate> datasDisponiveis = new ArrayList<LocalDate>();
         for (Agendamento agendamento : agendamentos) {
             LocalDate data = LocalDate.parse(agendamento.getData(), formatter);
             if (!datasDisponiveis.contains(data)) {
@@ -36,12 +49,12 @@ public class GerenciadorAgendamento {
             Agendamento agendamento = new Agendamento(dataEscolhida, "08:00", "Novo agendamento");
             agendamentos.add(agendamento);
             System.out.println("Agendamento realizado com sucesso!");
+            return agendamento;
         } else {
             System.out.println("Data não disponível. Agendamento não realizado.");
         }
     }
     
-
     public boolean verificarDataDisponivel(LocalDate data) {
         for (Agendamento agendamento : agendamentos) {
             LocalDate agendamentoData = LocalDate.parse(agendamento.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
