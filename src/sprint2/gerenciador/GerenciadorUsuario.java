@@ -57,46 +57,73 @@ public class GerenciadorUsuario {
         System.out.println("\nUsuário cadastrado com sucesso!");
         return usuario;
     }
-
+    
     public void login() {
-    	do {
+    	while (true) {
+    		boolean autenticado = false;
+    		if (usuarioLogado != null) {
+    			System.out.println("Você já está logado.");
+    			break;
+    		}
     		System.out.println("\n*-* LOGIN USUÁRIO *-*");
-            System.out.print("Digite o nome de usuário: ");
-            String nomeUsuario = scanner.nextLine();
+            System.out.print("Digite o e-mail: ");
+            String email = scanner.nextLine();
             System.out.print("Digite a senha: ");
             String senha = scanner.nextLine();
-
             for (Usuario usuario : usuarios) {
-                if (usuario.getNomeUsuario().equals(nomeUsuario) && usuario.getSenha().equals(senha)) {
+            	if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
                     System.out.println("\nLogin realizado com sucesso!");
+                    autenticado = true;
+                    setUsuarioLogado(usuario);
                     break;
-                } else {
-                	System.out.println("\nUsuário ou senha inválidos.");
-                	continue;
-                }
+                } 
             }
-    	}	while (true);
+            if (autenticado == false) {
+                System.out.println("\nUsuário ou senha inválidos.");
+            	continue;
+            	} else {
+            		break;
+            	}
+            
+    	}
     	
     }
     
+    public void logout() {
+    	if (usuarioLogado != null) {
+    		usuarioLogado = null;
+    		System.out.println("\nDeslogando...");
+    	} else {
+    		System.out.println("Você ainda não está logado.");
+    	}
+    }
+
+    
     public void adicionarVeiculoAoUsuario(Veiculo veiculo, Usuario usuario) {
-    	usuario.getVeiculos().add(veiculo);
-    	System.out.println("\nVeículo adicionado com sucesso.");
+    	if (usuario.getEmail() != usuarioLogado.getEmail()) {
+    		System.out.println("Você não está logado. Veículo não foi adicionado a sua lista.");
+    	} else {
+    		usuario.getVeiculos().add(veiculo);
+    		setUsuarioLogado(usuario);
+        	System.out.println("\nVeículo adicionado com sucesso.");
+    	}
     }
     
     public void removerVeiculoDoUsuario(Veiculo veiculo, Usuario usuario) {
-    	usuario.getVeiculos().remove(veiculo);
-    	System.out.println("\nVeículo removido com sucesso.");
-    }
-    
-    public void removerUsuario(Usuario usuario) {
-    	usuarios.remove(usuario);
+    	if (usuario.getEmail() != usuarioLogado.getEmail()) {
+    		System.out.println("Você não está logado. Veículo não foi removido da sua lista.");
+    	} else {
+    		usuario.getVeiculos().remove(veiculo);
+    		setUsuarioLogado(usuario);
+        	System.out.println("\nVeículo removido com sucesso.");
+    	}
     }
     
     public void imprimirUsuarios() {
     	System.out.println("\n*-* LISTA DE USUÁRIOS *-*\n");
     	for (Usuario usuario : usuarios) {
     		System.out.println("Nome: " + usuario.getNomeUsuario());
+    		System.out.println("Senha: " + usuario.getSenha());
     		System.out.println("E-mail: " + usuario.getEmail());
     		System.out.println("Telefone: " + usuario.getTelefone() + "\n");
     	}
@@ -110,6 +137,11 @@ public class GerenciadorUsuario {
 }
    
     public Usuario getUsuarioLogado() { // add this method
-        return usuarioLogado;
+        return this.usuarioLogado;
     }
+    
+    public void setUsuarioLogado(Usuario usuario) {
+    	this.usuarioLogado = usuario;
+    }
+    
 }

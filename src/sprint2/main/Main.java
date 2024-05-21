@@ -129,15 +129,19 @@ public class Main {
         gerenciadorOrcamento.gerarOrcamento();
         gerenciadorOrcamento.imprimirOrcamento();
         
-        GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
-        gerenciadorAgendamento.realizarAgendamento(gerenciadorServico);
+        //GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
+        //gerenciadorAgendamento.realizarAgendamento(gerenciadorServico);
         
         // criando um usuario novo e logando
         GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario();
         Usuario usuario1 = gerenciadorUsuario.cadastrar();
         Usuario usuario2 = gerenciadorUsuario.cadastrar();
-        gerenciadorUsuario.login();
         gerenciadorUsuario.imprimirUsuarios();
+        
+        System.out.println("*-* Tentativa Logout sem estar logado *-*\n");
+        gerenciadorUsuario.logout();
+        gerenciadorUsuario.login();
+       
         
         // criando e adicionando veículos para cada usuário
         GerenciadorVeiculo gerenciadorVeiculo = new GerenciadorVeiculo();
@@ -157,6 +161,10 @@ public class Main {
         // remove veículo do usuário
         gerenciadorUsuario.removerVeiculoDoUsuario(veiculo1, usuario1);
         gerenciadorUsuario.listarVeiculosDoUsuario(usuario1);
+        
+        gerenciadorUsuario.logout();
+        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo3, usuario2);
+        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo4, usuario2);
         
         
 
