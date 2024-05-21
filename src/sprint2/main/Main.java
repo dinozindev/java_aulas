@@ -22,9 +22,15 @@ import sprint2.model.Veiculo;
 public class Main {
     public static void main(String[] args) {
     	
-    	// Criação de um serviço e adição dele na lista de serviços
+    	// Criação de serviços e adição deles na lista de serviços
     	GerenciadorServico gerenciadorServico = new GerenciadorServico();
     	Servico servico2 = new Servico("Manutenção Automotiva", "Troca do filtro de cabine", 79.99, 15);
+    	gerenciadorServico.adicionarServico(new Servico("Mecânica", "Troca de óleo", 100.0, 30));
+    	gerenciadorServico.adicionarServico(new Servico("Mecânica", "Troca de pneus", 300.0, 60));
+    	gerenciadorServico.adicionarServico(new Servico("Mecânica", "Revisão geral", 250.0, 120));
+    	gerenciadorServico.adicionarServico(new Servico("Eletrônica", "Troca de bateria", 200.0, 30));
+    	gerenciadorServico.adicionarServico(new Servico("Eletrônica", "Troca de lâmpadas", 50.0, 15));
+    	gerenciadorServico.adicionarServico(new Servico("Eletrônica", "Revisão de sistema elétrico", 150.0, 60));
     	gerenciadorServico.adicionarServico(servico2);
     	gerenciadorServico.listarServicos();
     	
@@ -62,7 +68,7 @@ public class Main {
         gerenciadorFuncionario.alterarCargo(funcionario1, cargo2);
         gerenciadorFuncionario.alterarCentroAutomotivo(funcionario1, centroAutomotivo2);
         gerenciadorFuncionario.alterarDisponibilidade(funcionario1);
-        System.out.println("Dados do funcionário 1 alterados");
+        System.out.println("Dados do funcionário 1 alterados\n");
         System.out.println(funcionario1.toString());
         
         // remoção do funcionário
@@ -113,7 +119,7 @@ public class Main {
         gerenciadorPecas.listarPecas();
         
         // consulta disponibilidade
-        System.out.println("\n*-* Consulta disponibilidade *-*\n");
+        System.out.println("\n*-* Consulta disponibilidade de peças *-*\n");
         gerenciadorPecas.consultarDisponibilidadePeca(peca1);
         gerenciadorPecas.consultarDisponibilidadePeca(peca2);
         
@@ -123,10 +129,13 @@ public class Main {
         gerenciadorOrcamento.gerarOrcamento();
         gerenciadorOrcamento.imprimirOrcamento();
         
+        GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
+        gerenciadorAgendamento.realizarAgendamento(gerenciadorServico);
+        
         // criando um usuario novo e logando
         GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario();
         Usuario usuario1 = gerenciadorUsuario.cadastrar();
-        // Usuario usuario2 = gerenciadorUsuario.cadastrar();
+        Usuario usuario2 = gerenciadorUsuario.cadastrar();
         gerenciadorUsuario.login();
         gerenciadorUsuario.imprimirUsuarios();
         
@@ -137,13 +146,13 @@ public class Main {
         Veiculo veiculo2 = gerenciadorVeiculo.criarVeiculo();
         gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo2, usuario1);
         Veiculo veiculo3 = gerenciadorVeiculo.criarVeiculo();
-        //gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo3, usuario2);
+        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo3, usuario2);
         Veiculo veiculo4 = gerenciadorVeiculo.criarVeiculo();
-        //gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo4, usuario2);
+        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo4, usuario2);
         
         // imprime lista de veículos do usuário
         gerenciadorUsuario.listarVeiculosDoUsuario(usuario1);
-        //gerenciadorUsuario.listarVeiculosDoUsuario(usuario2);
+        gerenciadorUsuario.listarVeiculosDoUsuario(usuario2);
         
         // remove veículo do usuário
         gerenciadorUsuario.removerVeiculoDoUsuario(veiculo1, usuario1);

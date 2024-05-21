@@ -12,12 +12,6 @@ public class GerenciadorServico {
     public GerenciadorServico() {
         this.servicos = new ArrayList<Servico>();
 
-        this.servicos.add(new Servico("Mecânica", "Troca de óleo", 100.0, 30));
-        this.servicos.add(new Servico("Mecânica", "Troca de pneus", 300.0, 60));
-        this.servicos.add(new Servico("Mecânica", "Revisão geral", 250.0, 120));
-        this.servicos.add(new Servico("Eletrônica", "Troca de bateria", 200.0, 30));
-        this.servicos.add(new Servico("Eletrônica", "Troca de lâmpadas", 50.0, 15));
-        this.servicos.add(new Servico("Eletrônica", "Revisão de sistema elétrico", 150.0, 60));
     }
 
     // Métodos
@@ -37,6 +31,10 @@ public class GerenciadorServico {
         	System.out.println("Preço: R$" + servico.getPreco());
         	System.out.println("Duração estimada: " + servico.getDuracaoEstimada() + " minutos\n");
         }
+    }
+    
+    public ArrayList<Servico> retornaListaServicos() {
+    	return servicos;
     }
 
     public Servico retornaServico(String descricao) {

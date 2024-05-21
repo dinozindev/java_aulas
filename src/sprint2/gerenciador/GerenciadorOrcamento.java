@@ -16,9 +16,9 @@ public class GerenciadorOrcamento {
 	
 	public void imprimirOrcamento() {
 		System.out.println("\n*-* ORÇAMENTO *-*\n");
-		System.out.println("Valor serviço: " + orcamento.getServico().getPreco());
-		System.out.println("Valor peça: " + orcamento.getPeca().getPrecoPeca());
-		System.out.println("Valor total: " + orcamento.getValor_total());
+		System.out.println("Serviço: " + orcamento.getServico().getDescricao() + ": R$" + orcamento.getServico().getPreco());
+		System.out.println("Peça: " + orcamento.getPeca().getNomePeca() + ": R$" + orcamento.getPeca().getPrecoPeca());
+		System.out.println("Valor total: R$" + orcamento.getValor_total());
 	}
 	
 	

@@ -1,31 +1,64 @@
 package sprint2.model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Problema {
+	private int idProblema;
+	private String nomeProblema;
+	private String descricaoProblema;
+	private String categoriaProblema;
+	private String gravidadeProblema;
+	
+	public Problema(int idProblema, String nomeProblema, String descricaoProblema, String categoriaProblema, String gravidadeProblema) {
+		this.idProblema = idProblema;
+		this.nomeProblema = nomeProblema;
+		this.descricaoProblema = descricaoProblema;
+		this.categoriaProblema = categoriaProblema;
+		this.gravidadeProblema = gravidadeProblema;
+	}
 
-    private List<Problema> problemas;
+	public int getIdProblema() {
+		return idProblema;
+	}
 
-    public List<Problema> getProblemas() {
-        return problemas;
-    }
+	public void setIdProblema(int idProblema) {
+		this.idProblema = idProblema;
+	}
 
-    public void setProblemas(List<Problema> problemas) {
-        this.problemas = problemas;
-    }
+	public String getNomeProblema() {
+		return nomeProblema;
+	}
 
+	public void setNomeProblema(String nomeProblema) {
+		this.nomeProblema = nomeProblema;
+	}
 
-    public Problema() {
-        this.problemas = new ArrayList<>();
-    }
+	public String getDescricaoProblema() {
+		return descricaoProblema;
+	}
 
-    public void adicionarProblema(Problema problema) {
-        this.problemas.add(problema);
-    }
+	public void setDescricaoProblema(String descricaoProblema) {
+		this.descricaoProblema = descricaoProblema;
+	}
 
-    public void removerProblema(Problema problema) {
-        this.problemas.remove(problema);
-    }
+	public String getCategoriaProblema() {
+		return categoriaProblema;
+	}
 
+	public void setCategoriaProblema(String categoriaProblema) {
+		this.categoriaProblema = categoriaProblema;
+	}
+
+	public String getGravidadeProblema() {
+		return gravidadeProblema;
+	}
+
+	public void setGravidadeProblema(String gravidadeProblema) {
+		this.gravidadeProblema = gravidadeProblema;
+	}
+
+	public String toString() {
+		return "Problema [idProblema=" + idProblema + ", nomeProblema=" + nomeProblema + ", descricaoProblema="
+				+ descricaoProblema + ", categoriaProblema=" + categoriaProblema + ", gravidadeProblema="
+				+ gravidadeProblema + "]";
+	}
 }

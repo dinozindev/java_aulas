@@ -69,7 +69,7 @@ public class GerenciadorUsuario {
             for (Usuario usuario : usuarios) {
                 if (usuario.getNomeUsuario().equals(nomeUsuario) && usuario.getSenha().equals(senha)) {
                     System.out.println("\nLogin realizado com sucesso!");
-                    return;
+                    break;
                 } else {
                 	System.out.println("\nUsuário ou senha inválidos.");
                 	continue;
