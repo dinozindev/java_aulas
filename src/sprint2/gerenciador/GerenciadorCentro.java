@@ -1,11 +1,10 @@
 package sprint2.gerenciador;
 
 import java.util.ArrayList;
-import java.util.List;
 import sprint2.model.CentroAutomotivo;
 
 public class GerenciadorCentro {
-    private List<CentroAutomotivo> centrosAutomotivos;
+    private ArrayList<CentroAutomotivo> centrosAutomotivos;
 
     public GerenciadorCentro() {
         this.centrosAutomotivos = new ArrayList<CentroAutomotivo>();
@@ -28,6 +27,10 @@ public class GerenciadorCentro {
             System.out.println("Telefone: " + centroAutomotivo.getTelefone());
             System.out.println("Horário de funcionamento: " + centroAutomotivo.getHorarioFuncionamento() + "\n");                   
         }
+    }
+    
+    public ArrayList<CentroAutomotivo> retornaListaCentros() {
+    	return centrosAutomotivos;
     }
     
     public CentroAutomotivo retornaCentro(String nomeCentro) {

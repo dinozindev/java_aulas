@@ -1,12 +1,12 @@
 package sprint2.model;
 
-public class AutoDiagnostico {
+public class Diagnostico {
 	private int idDiagnostico;
 	private Problema problema;
 	private Servico solucao;
 	private String descricao;
 	
-	public AutoDiagnostico(int idDiagnostico, Problema problema, String descricao) {
+	public Diagnostico(int idDiagnostico, Problema problema, String descricao) {
 		this.idDiagnostico = idDiagnostico;
 		this.problema = problema;
 		this.descricao = descricao;

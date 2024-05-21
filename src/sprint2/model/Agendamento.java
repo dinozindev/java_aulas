@@ -6,17 +6,21 @@ public class Agendamento {
     private String descricao;
     private CentroAutomotivo centro;
     private Servico servico;
+    private Usuario usuario;
+    private Veiculo veiculo;
 
 	public Agendamento() {
 		
 	}
 
-    public Agendamento(String data, String hora, String descricao, CentroAutomotivo centro, Servico servico) {
+    public Agendamento(String data, String hora, String descricao, CentroAutomotivo centro, Servico servico, Usuario usuario, Veiculo veiculo) {
         this.data = data;
         this.hora = hora;
         this.descricao = descricao;
         this.centro = centro;
         this.servico = servico;
+        this.usuario = usuario;
+        this.veiculo = veiculo;
     }
 
     public String getData() {
@@ -58,9 +62,26 @@ public class Agendamento {
 	public void setServico(Servico servico) {
 		this.servico = servico;
 	}
+	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
 
 	public String toString() {
 		return "Agendamento [data=" + data + ", hora=" + hora + ", descricao=" + descricao + ", centro=" + centro
-				+ ", servico=" + servico + "]";
+				+ ", servico=" + servico + ", usuario=" + usuario + ", veiculo=" + veiculo + "]";
 	}
 }

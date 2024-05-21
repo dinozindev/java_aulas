@@ -9,6 +9,7 @@ import sprint2.gerenciador.GerenciadorOrcamento;
 import sprint2.gerenciador.GerenciadorPecas;
 import sprint2.gerenciador.GerenciadorUsuario;
 import sprint2.gerenciador.GerenciadorVeiculo;
+import sprint2.model.Agendamento;
 import sprint2.model.Cargo;
 import sprint2.model.CentroAutomotivo;
 import sprint2.model.Servico;
@@ -34,14 +35,16 @@ public class Main {
     	gerenciadorServico.adicionarServico(servico2);
     	gerenciadorServico.listarServicos();
     	
+    	
+    	System.out.println("*-* Removendo o servico2 da lista de serviços *-*");
     	// remoção do serviço da lista
     	gerenciadorServico.removerServico(servico2);
     	gerenciadorServico.listarServicos();
     	
     	// obtenção de um serviço na lista através da descrição
-    	System.out.println("\nObtenção do serviço pela descrição 'Troca de óleo'\n");
+    	System.out.println("*-* Obtenção do serviço pela descrição 'Troca de óleo' *-*\n");
     	Servico servico1 = gerenciadorServico.retornaServico("Troca de óleo");
-    	System.out.println(servico1.toString());
+    	System.out.println("Serviço obtido: " + servico1.toString());
     	
     	System.out.println("\n===================================");
     	
@@ -68,9 +71,10 @@ public class Main {
         gerenciadorFuncionario.alterarCargo(funcionario1, cargo2);
         gerenciadorFuncionario.alterarCentroAutomotivo(funcionario1, centroAutomotivo2);
         gerenciadorFuncionario.alterarDisponibilidade(funcionario1);
-        System.out.println("Dados do funcionário 1 alterados\n");
+        System.out.println("*-* Alterando dados do funcionario1 *-*\n");
         System.out.println(funcionario1.toString());
         
+        System.out.println("\n*-* Remoção do funcionário2 da lista de funcionários *-*");
         // remoção do funcionário
         gerenciadorFuncionario.removerFuncionario(funcionario2);
         gerenciadorFuncionario.listarFuncionarios();
@@ -84,7 +88,7 @@ public class Main {
         gerenciadorCentro.listarUnidades();
         
         // remove centroAutomotivo da lista
-        System.out.println("*-* Removendo oficina *-*");
+        System.out.println("*-* Removendo centroAutomotivo1 da lista de unidades *-*");
         gerenciadorCentro.removerUnidade(centroAutomotivo1);
         gerenciadorCentro.listarUnidades();
         
@@ -103,25 +107,34 @@ public class Main {
         gerenciadorCargo.listarCargos();
         
         // retorna cargo com base no nome
-        System.out.println("*-* Cargo retornado com base em seu nome *-*\n");
+        System.out.println("*-* Cargo 'Lavador' retornado com base em seu nome *-*\n");
         Cargo cargoTeste = gerenciadorCargo.retornaCargo("Lavador");
         System.out.println(cargoTeste.toString());
         
         
-        System.out.println("===================================");
+        System.out.println("\n===================================\n");
         
         // cria peça, adiciona na lista e imprime
+        System.out.println("*-* Criando e adicionando peças para a lista de peças *-*\n");
         Peca peca1 = new Peca(112, true, "Filtro de Cabine", 69.99);
         Peca peca2 = new Peca(113, false, "Disco de pastilha traseiro", 39.99);
+        Peca peca3 = new Peca(114, true, "Bateria 40ah", 69.99);
         GerenciadorPecas gerenciadorPecas = new GerenciadorPecas();
         gerenciadorPecas.adicionarPeca(peca1);
         gerenciadorPecas.adicionarPeca(peca2);
+        gerenciadorPecas.adicionarPeca(peca3);
         gerenciadorPecas.listarPecas();
         
         // consulta disponibilidade
-        System.out.println("\n*-* Consulta disponibilidade de peças *-*\n");
+        System.out.println("*-* Consulta disponibilidade de peças *-*\n");
         gerenciadorPecas.consultarDisponibilidadePeca(peca1);
         gerenciadorPecas.consultarDisponibilidadePeca(peca2);
+        gerenciadorPecas.consultarDisponibilidadePeca(peca3);
+        
+        // remove uma peça
+        System.out.println("\n*-* Removendo peca3 da lista de peças *-*\n");
+        gerenciadorPecas.removerPeca(peca3);
+        gerenciadorPecas.listarPecas();
         
         // cria orcamento
         Orcamento orcamento1 = new Orcamento(000001, "Orçamento gerado", "Ativo", servico2, peca1);
@@ -129,13 +142,10 @@ public class Main {
         gerenciadorOrcamento.gerarOrcamento();
         gerenciadorOrcamento.imprimirOrcamento();
         
-        //GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
-        //gerenciadorAgendamento.realizarAgendamento(gerenciadorServico);
-        
         // criando um usuario novo e logando
         GerenciadorUsuario gerenciadorUsuario = new GerenciadorUsuario();
         Usuario usuario1 = gerenciadorUsuario.cadastrar();
-        Usuario usuario2 = gerenciadorUsuario.cadastrar();
+        //Usuario usuario2 = gerenciadorUsuario.cadastrar();
         gerenciadorUsuario.imprimirUsuarios();
         
         System.out.println("*-* Tentativa Logout sem estar logado *-*\n");
@@ -149,22 +159,30 @@ public class Main {
         gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo1, usuario1);
         Veiculo veiculo2 = gerenciadorVeiculo.criarVeiculo();
         gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo2, usuario1);
-        Veiculo veiculo3 = gerenciadorVeiculo.criarVeiculo();
-        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo3, usuario2);
-        Veiculo veiculo4 = gerenciadorVeiculo.criarVeiculo();
-        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo4, usuario2);
+        //Veiculo veiculo3 = gerenciadorVeiculo.criarVeiculo();
+        //gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo3, usuario2);
+        //Veiculo veiculo4 = gerenciadorVeiculo.criarVeiculo();
+        //gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo4, usuario2);
         
-        // imprime lista de veículos do usuário
-        gerenciadorUsuario.listarVeiculosDoUsuario(usuario1);
-        gerenciadorUsuario.listarVeiculosDoUsuario(usuario2);
+        System.out.println("======================================");
+        
+        // solicitando um agendamento
+        GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
+        Agendamento agendamento1 = gerenciadorAgendamento.realizarAgendamento(gerenciadorServico, gerenciadorUsuario, usuario1, gerenciadorCentro);
+        gerenciadorAgendamento.adicionarAgendamento(agendamento1);
+        gerenciadorAgendamento.imprimirAgendamentos();
+        
+        System.out.println("======================================");
+        
+        //gerenciadorUsuario.listarVeiculosDoUsuario(usuario2);
         
         // remove veículo do usuário
         gerenciadorUsuario.removerVeiculoDoUsuario(veiculo1, usuario1);
         gerenciadorUsuario.listarVeiculosDoUsuario(usuario1);
         
         gerenciadorUsuario.logout();
-        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo3, usuario2);
-        gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo4, usuario2);
+        //gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo3, usuario2);
+        //gerenciadorUsuario.adicionarVeiculoAoUsuario(veiculo4, usuario2);
         
         
 

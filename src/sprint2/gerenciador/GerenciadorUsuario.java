@@ -100,7 +100,7 @@ public class GerenciadorUsuario {
 
     
     public void adicionarVeiculoAoUsuario(Veiculo veiculo, Usuario usuario) {
-    	if (usuario.getEmail() != usuarioLogado.getEmail()) {
+    	if (usuario.getEmail() != usuarioLogado.getEmail() || usuarioLogado == null) {
     		System.out.println("Você não está logado. Veículo não foi adicionado a sua lista.");
     	} else {
     		usuario.getVeiculos().add(veiculo);
@@ -110,7 +110,7 @@ public class GerenciadorUsuario {
     }
     
     public void removerVeiculoDoUsuario(Veiculo veiculo, Usuario usuario) {
-    	if (usuario.getEmail() != usuarioLogado.getEmail()) {
+    	if (usuario.getEmail() != usuarioLogado.getEmail() || usuarioLogado == null) {
     		System.out.println("Você não está logado. Veículo não foi removido da sua lista.");
     	} else {
     		usuario.getVeiculos().remove(veiculo);
@@ -132,7 +132,7 @@ public class GerenciadorUsuario {
     public void listarVeiculosDoUsuario(Usuario usuario) {
 		System.out.println("\n*-* VEÍCULOS DO USUÁRIO " + usuario.getNomeUsuario().toUpperCase() + " *-*\n");
     for (Veiculo veiculo : usuario.getVeiculos()) {
-        System.out.println(veiculo.getMarca() + " " + veiculo.getModelo() + " (" + veiculo.getAno() + ", " + veiculo.getPlaca() + ", " + veiculo.getQuilometragem() + ")");
+        System.out.println(veiculo.getMarca() + " " + veiculo.getModelo() + " (" + veiculo.getAno() + ", " + veiculo.getPlaca() + ", " + veiculo.getQuilometragem() + "km)");
     }
 }
    

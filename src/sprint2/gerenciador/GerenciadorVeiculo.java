@@ -29,6 +29,7 @@ public class GerenciadorVeiculo {
         String marca = scanner.nextLine();
         System.out.print("Digite o modelo do veículo: ");
         String modelo = scanner.nextLine();
+        // se o ano não estiver entre 1886 e 2024, repete
         while (true) {
         	System.out.print("Digite o ano do veículo (entre 1886 e 2024): ");
         	String ano = scanner.nextLine(); 
@@ -41,12 +42,24 @@ public class GerenciadorVeiculo {
         		System.out.println("Digite um ano válido.");
         	}
         }
+        // se a placa n seguir o padrão ou já existir no sistema, repete
         while (true) {
         	System.out.print("Digite a placa do veículo (ex: ABC-1D23): ");
             placa = scanner.nextLine();
             Matcher matcher = patternPlaca.matcher(placa);
+            boolean placaIgual = false;
             if (matcher.matches()) {
-            	break;
+            	for (Veiculo veiculo : veiculosTotais) {
+            		if (veiculo.getPlaca().equals(placa)) {
+            			placaIgual = true;
+            			System.out.println("A placa informada já está cadastrada no sistema.");
+            		}
+            	}
+            	if (placaIgual == false) {
+            		break;
+            	} else {
+            		continue;
+            	}	
             } else {
             	System.out.println("Placa com formato inválido.");
             	continue;
@@ -67,8 +80,6 @@ public class GerenciadorVeiculo {
         		System.out.println("Digite uma quilometragem válida.");
         	}  
         }
-        
-
         Veiculo veiculo = new Veiculo(marca, modelo, anoConvertido, placa, quilometragem);
         veiculosTotais.add(veiculo);
         System.out.println("\nVeículo criado com sucesso!");

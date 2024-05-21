@@ -6,6 +6,10 @@ public class Veiculo {
     private String placa;
     private int ano;
     private double quilometragem;
+    
+    public Veiculo() {
+    	
+    }
 
     public Veiculo(String marca, String modelo, int ano, String placa, double quilometragem) {
         this.marca = marca;
