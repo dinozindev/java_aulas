@@ -25,6 +25,8 @@ import sprint2.model.Veiculo;
 public class Main {
     public static void main(String[] args) {
     	
+    	// testando métodos
+    	
     	// cria peça, adiciona na lista e imprime
         System.out.println("*-* Criando e adicionando peças para a lista de peças *-*\n");
         Peca peca1 = new Peca(112, true, "Filtro de Cabine", 69.99);
@@ -192,10 +194,6 @@ public class Main {
         
         GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
         
-        System.out.println("\n*-* Tentando remover agendamento sem ter um marcado *-*\n");
-        
-        gerenciadorAgendamento.removerAgendamento(usuario1);
-        
         // solicitando um agendamento
         Agendamento agendamento1 = gerenciadorAgendamento.realizarAgendamento(gerenciadorServico, gerenciadorUsuario, usuario1, gerenciadorCentro);
         gerenciadorAgendamento.adicionarAgendamento(agendamento1);
@@ -220,6 +218,14 @@ public class Main {
         
         // imprime o diagnostico completo
         diagnostico1.imprimirDiagnostico();
+        
+        System.out.println("======================================\n");
+        
+        // cancela agendamento atual, e agenda um novo usando as informações do diagnóstico.
+        gerenciadorAgendamento.removerAgendamento(agendamento1);
+        Agendamento agendamentoDiagnostico = gerenciadorAgendamento.agendarComDiagnostico(diagnostico1, gerenciadorUsuario, gerenciadorCentro);
+        gerenciadorAgendamento.adicionarAgendamento(agendamentoDiagnostico);
+        gerenciadorAgendamento.imprimirAgendamentos();
         
         // realiza logout, usuarioLogado é zerado.
         gerenciadorUsuario.logout();

@@ -1,6 +1,9 @@
 package sprint2.model;
 
+import java.util.UUID;
+
 public class Agendamento {
+	private String idAgendamento;
     private String data;
     private String hora;
     private String descricao;
@@ -10,10 +13,11 @@ public class Agendamento {
     private Veiculo veiculo;
 
 	public Agendamento() {
-		
+		this.idAgendamento = UUID.randomUUID().toString();
 	}
 
     public Agendamento(String data, String hora, String descricao, CentroAutomotivo centro, Servico servico, Usuario usuario, Veiculo veiculo) {
+    	this.idAgendamento = UUID.randomUUID().toString();
         this.data = data;
         this.hora = hora;
         this.descricao = descricao;
@@ -79,9 +83,21 @@ public class Agendamento {
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
 	}
+	
+
+	public String getIdAgendamento() {
+		return idAgendamento;
+	}
+
+	public void setIdAgendamento(String idAgendamento) {
+		this.idAgendamento = idAgendamento;
+	}
 
 	public String toString() {
-		return "Agendamento [data=" + data + ", hora=" + hora + ", descricao=" + descricao + ", centro=" + centro
-				+ ", servico=" + servico + ", usuario=" + usuario + ", veiculo=" + veiculo + "]";
+		return "Agendamento [idAgendamento=" + idAgendamento + ", data=" + data + ", hora=" + hora + ", descricao="
+				+ descricao + ", centro=" + centro + ", servico=" + servico + ", usuario=" + usuario + ", veiculo="
+				+ veiculo + "]";
 	}
+
+	
 }

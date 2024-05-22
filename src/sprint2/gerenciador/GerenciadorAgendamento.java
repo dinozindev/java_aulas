@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 import sprint2.model.Agendamento;
 import sprint2.model.CentroAutomotivo;
+import sprint2.model.Diagnostico;
 import sprint2.model.Servico;
 import sprint2.model.Usuario;
 import sprint2.model.Veiculo;
@@ -128,29 +129,100 @@ public class GerenciadorAgendamento {
     	return agendamento;
     }
     
+    public Agendamento agendarComDiagnostico(Diagnostico diagnostico, GerenciadorUsuario gu, GerenciadorCentro gc) {
+    	System.out.println("\n*-* INICIANDO AGENDAMENTO COM DIAGNÓSTICO *-*\n");
+    	scanner = new Scanner(System.in);
+    	Pattern regexHora = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])(:([0-5][0-9]))?$");
+    	Pattern regexData = Pattern.compile("^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])$");
+    	boolean marcou = false;
+    	Agendamento agendamento = new Agendamento();
+    	while (true) {
+    		if (gu.getUsuarioLogado() != diagnostico.getUsuario()) {
+    			System.out.println("Você não está logado. Realize o login primeiro.");
+    			break;
+    		} else {
+    			for (Agendamento agendamentoDoUsuario : agendamentos) {
+    				if (agendamentoDoUsuario.getUsuario() == diagnostico.getUsuario()) {
+    					marcou = true;
+    					System.out.println("Você já possui um agendamento marcado.");
+    					break;
+    				}
+    			}
+    			if (marcou == true) {
+    				break;
+    			} else {
+    				agendamento.setUsuario(diagnostico.getUsuario());
+    			}	
+    		}
+    		while (true) {
+	        	System.out.print("Qual a data do agendamento?: ");
+	            String inputData = scanner.nextLine();
+	            Matcher matcherData = regexData.matcher(inputData);
+	            if (matcherData.matches()) {
+	            	agendamento.setData(inputData);
+	            	break;
+	            } else {
+	            	System.out.println("Data inválida.");
+	            	continue;
+	            }
+	        }
+    		while (true) {
+    	        System.out.print("Qual o horário do agendamento?: ");
+    	        String inputHora = scanner.nextLine();
+    	        Matcher matcherHora = regexHora.matcher(inputHora);
+    	           if (matcherHora.matches()) {
+    	        	   agendamento.setHora(inputHora);
+    	        	   break;
+    	            } else {
+    	            	System.out.println("Horário inválido.");
+    	            	continue;
+    	            }
+    	        }
+    		while(true) {
+        		System.out.println("Qual centro deseja realizar o serviço?: ");
+        		String inputCentro = scanner.nextLine();
+        		for (CentroAutomotivo centro : gc.retornaListaCentros()) {
+        			if (centro.getNomeCentro().equalsIgnoreCase(inputCentro)) {
+        				agendamento.setCentro(centro); 
+        				break;
+        			} 
+        		}
+        		if (agendamento.getCentro() != null) {
+        			break;
+        		} else {
+        			System.out.println("O Centro Automotivo informado não está registrado em nosso sistema.");
+        			continue;
+        		}
+        	}
+    		System.out.println("\nAgendamento realizado com sucesso!\n");
+        	break;
+    	}
+    	agendamento.setVeiculo(diagnostico.getVeiculo());
+    	agendamento.setServico(diagnostico.getSolucao());
+    	return agendamento;
+    }
+    	
+ 
+    
     public void adicionarAgendamento(Agendamento agendamento) {
     	agendamentos.add(agendamento);
     }
     
-    public void removerAgendamento(Usuario usuario) {
-    	for (Agendamento agendamento : agendamentos) {
-    		if (agendamento.getUsuario() == usuario) {
-    			agendamentos.remove(agendamento);
-    		}
-    	}
-    	System.out.println("Você não possui nenhum agendamento para ser removido.");
+    public void removerAgendamento(Agendamento agendamento) {
+    	agendamentos.remove(agendamento);
     }
     
     public void imprimirAgendamentos() {
     	System.out.println("\n*-* LISTA DE AGENDAMENTOS *-*\n");
     	for (Agendamento agendamento : agendamentos) {
-    		System.out.println("Serviço....: " + agendamento.getServico().getDescricaoServico());
-    		System.out.println("Peça.......: " + agendamento.getServico().getPeca().getNomePeca());
-    		System.out.println("Oficina....: " + agendamento.getCentro().getNomeCentro());
-    		System.out.println("Data.......: " + agendamento.getData());
-    		System.out.println("Horário....: " + agendamento.getHora());
-    		System.out.println("Usuário....: " + agendamento.getUsuario().getNomeUsuario());
-    		System.out.println("Veículo....: " + agendamento.getVeiculo().getMarca() + " " + agendamento.getVeiculo().getModelo() + " " + agendamento.getVeiculo().getAno() + " " + agendamento.getVeiculo().getPlaca());
+    		System.out.println("ID Agendamento: " + agendamento.getIdAgendamento());
+    		System.out.println("Serviço.......: " + agendamento.getServico().getDescricaoServico());
+    		System.out.println("Peça..........: " + agendamento.getServico().getPeca().getNomePeca());
+    		System.out.println("Oficina.......: " + agendamento.getCentro().getNomeCentro());
+    		System.out.println("Data..........: " + agendamento.getData());
+    		System.out.println("Horário.......: " + agendamento.getHora());
+    		System.out.println("Usuário.......: " + agendamento.getUsuario().getNomeUsuario());
+    		System.out.println("Veículo.......: " + agendamento.getVeiculo().getMarca() + " " + agendamento.getVeiculo().getModelo() + " " + agendamento.getVeiculo().getAno() + " " + agendamento.getVeiculo().getPlaca());
     		System.out.println("Técnico responsável: " + (agendamento.getServico().getResponsavel() != null ? agendamento.getServico().getResponsavel().getNomeFuncionario() : "Não especificado") + "\n");
     	}
     }
