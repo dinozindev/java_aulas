@@ -1,26 +1,26 @@
 package sprint2.model;
 
 public class CentroAutomotivo {
-    private int idUnidade;
+    private int idCentro;
     private String nomeCentro;
-    private String endereco;
-    private String telefone;
+    private String enderecoCentro;
+    private String telefoneCentro;
     private String horarioFuncionamento;
 
-    public CentroAutomotivo(int idUnidade, String nomeCentro, String endereco, String telefone, String horarioFuncionamento) {
-        this.idUnidade = idUnidade;
+    public CentroAutomotivo(int idCentro, String nomeCentro, String enderecoCentro, String telefoneCentro, String horarioFuncionamento) {
+        this.idCentro = idCentro;
         this.nomeCentro = nomeCentro;
-        this.endereco = endereco;
-        this.telefone = telefone;
+        this.enderecoCentro = enderecoCentro;
+        this.telefoneCentro = telefoneCentro;
         this.horarioFuncionamento = horarioFuncionamento;
     }
 
-    public int getIdUnidade() {
-        return idUnidade;
+    public int getIdCentro() {
+        return idCentro;
     }
 
-    public void setIdUnidade(int idUnidade) {
-        this.idUnidade = idUnidade;
+    public void setIdCentro(int idCentro) {
+        this.idCentro = idCentro;
     }
     
     public String getNomeCentro() {
@@ -31,20 +31,20 @@ public class CentroAutomotivo {
         this.nomeCentro = nomeCentro;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getEnderecoCentro() {
+        return enderecoCentro;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEnderecoCentro(String enderecoCentro) {
+        this.enderecoCentro = enderecoCentro;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelefoneCentro() {
+        return telefoneCentro;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelefoneCentro(String telefoneCentro) {
+        this.telefoneCentro = telefoneCentro;
     }
 
     public String getHorarioFuncionamento() {
@@ -56,8 +56,8 @@ public class CentroAutomotivo {
     }
 
 	public String toString() {
-		return "CentroAutomotivo [idUnidade=" + idUnidade + ", nomeCentro=" + nomeCentro + ", endereco=" + endereco
-				+ ", telefone=" + telefone + ", horarioFuncionamento=" + horarioFuncionamento + "]";
+		return "CentroAutomotivo [idCentro=" + idCentro + ", nomeCentro=" + nomeCentro + ", enderecoCentro=" + enderecoCentro
+				+ ", telefoneCentro=" + telefoneCentro + ", horarioFuncionamento=" + horarioFuncionamento + "]";
 	}
 
     

@@ -25,7 +25,8 @@ public class GerenciadorCargo {
 			System.out.println("ID: " + cargo.getIdCargo());
 			System.out.println("Nome do Cargo: " + cargo.getNomeCargo());
 			System.out.println("Descrição: " + cargo.getDescricaoCargo());
-			System.out.println("Área do Cargo: " + cargo.getAreaCargo() + "\n");
+			System.out.println("Área do Cargo: " + cargo.getAreaCargo());
+			System.out.println("Salário: R$" + cargo.getSalarioCargo() + "\n");
 		}
 	}
 	

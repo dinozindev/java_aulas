@@ -5,12 +5,14 @@ public class Cargo {
 	private String nomeCargo;
 	private String descricaoCargo;
 	private String areaCargo;
+	private double salarioCargo;
 	
-	public Cargo(int idCargo, String nomeCargo, String descricaoCargo, String areaCargo) {
+	public Cargo(int idCargo, String nomeCargo, String descricaoCargo, String areaCargo, double salarioCargo) {
 		this.idCargo = idCargo;
 		this.nomeCargo = nomeCargo;
 		this.descricaoCargo = descricaoCargo;
 		this.areaCargo = areaCargo;
+		this.salarioCargo = salarioCargo;
 	}
 
 	public int getIdCargo() {
@@ -44,9 +46,17 @@ public class Cargo {
 	public void setAreaCargo(String areaCargo) {
 		this.areaCargo = areaCargo;
 	}
+	
+	public double getSalarioCargo() {
+		return salarioCargo;
+	}
+
+	public void setSalarioCargo(double salarioCargo) {
+		this.salarioCargo = salarioCargo;
+	}
 
 	public String toString() {
 		return "Cargo [idCargo=" + idCargo + ", nomeCargo=" + nomeCargo + ", descricaoCargo=" + descricaoCargo
-				+ ", areaCargo=" + areaCargo + "]";
+				+ ", areaCargo=" + areaCargo + ", salarioCargo=" + salarioCargo + "]";
 	}
 }

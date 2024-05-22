@@ -1,25 +1,29 @@
 package sprint2.gerenciador;
 
+import sprint2.model.Diagnostico;
 import sprint2.model.Orcamento;
 
 public class GerenciadorOrcamento {
-	private Orcamento orcamento;
-	
-	public GerenciadorOrcamento(Orcamento orcamento) {
-		this.orcamento = orcamento;
+
+	public GerenciadorOrcamento() {
+
 	}
 	
-	public void gerarOrcamento() {
-		double total = orcamento.getServico().getPreco() + orcamento.getPeca().getPrecoPeca();
-		orcamento.setValor_total(total);
+	public Orcamento gerarOrcamento(Diagnostico diagnostico) {
+		Orcamento orcamento = new Orcamento();
+		orcamento.setIdOrcamento(diagnostico.getIdDiagnostico());
+		orcamento.setPeca(diagnostico.getSolucao().getPeca());
+		orcamento.setServico(diagnostico.getSolucao());
+		orcamento.setValor_total(orcamento.getPeca().getPrecoPeca() + orcamento.getServico().getPrecoServico());
+		orcamento.setStatusOrcamento("Realizado");
+		
+		return orcamento;
 	}
 	
-	public void imprimirOrcamento() {
-		System.out.println("\n*-* ORÇAMENTO *-*\n");
-		System.out.println("Serviço: " + orcamento.getServico().getDescricao() + ": R$" + orcamento.getServico().getPreco());
-		System.out.println("Peça: " + orcamento.getPeca().getNomePeca() + ": R$" + orcamento.getPeca().getPrecoPeca());
-		System.out.println("Valor total: R$" + orcamento.getValor_total());
+	public void alterarDescricao(Orcamento orcamento, String novaDescricao) {
+		orcamento.setDescricaoOrcamento(novaDescricao);
 	}
+	
 	
 	
 }

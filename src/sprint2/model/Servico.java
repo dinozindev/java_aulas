@@ -1,53 +1,84 @@
 package sprint2.model;
 
 public class Servico {
-    private String tipo;
-    private String descricao;
-    private double preco;
-    private int duracaoEstimada;
+	private int idServico;
+    private String tipoServico;
+    private String descricaoServico;
+    private double precoServico;
+    private int duracaoServico;
+    private Peca peca;
+    private Funcionario responsavel;
 
-    public Servico(String tipo, String descricao, double preco, int duracaoEstimada) {
-        this.tipo = tipo;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.duracaoEstimada = duracaoEstimada;
+    public Servico(int idServico, String tipoServico, String descricaoServico, double precoServico, int duracaoServico, Peca peca) {
+    	this.idServico = idServico;
+        this.tipoServico = tipoServico;
+        this.descricaoServico = descricaoServico;
+        this.precoServico = precoServico;
+        this.duracaoServico = duracaoServico;
+        this.peca = peca;
+    }
+    
+    public int getIdServico() {
+		return idServico;
+	}
+
+	public void setIdServico(int idServico) {
+		this.idServico = idServico;
+	}
+
+	public String getTipoServico() {
+        return tipoServico;
     }
 
-    public String getTipo() {
-        return tipo;
+    public void setTipoServico(String tipoServico) {
+        this.tipoServico = tipoServico;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public String getDescricaoServico() {
+        return descricaoServico;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public void setDescricaoServico(String descricaoServico) {
+        this.descricaoServico = descricaoServico;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public double getPrecoServico() {
+        return precoServico;
     }
 
-    public double getPreco() {
-        return preco;
+    public void setPrecoServico(double precoServico) {
+        this.precoServico = precoServico;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public int getDuracaoServico() {
+        return duracaoServico;
     }
 
-    public int getDuracaoEstimada() {
-        return duracaoEstimada;
+    public void setDuracaoServico(int duracaoServico) {
+        this.duracaoServico = duracaoServico;
     }
+    
+	public Peca getPeca() {
+		return peca;
+	}
 
-    public void setDuracaoEstimada(int duracaoEstimada) {
-        this.duracaoEstimada = duracaoEstimada;
-    }
+	public void setPeca(Peca peca) {
+		this.peca = peca;
+	}
+
+	public Funcionario getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(Funcionario responsavel) {
+		this.responsavel = responsavel;
+	}
 
 	public String toString() {
-		return "Servico [tipo=" + tipo + ", descricao=" + descricao + ", preco=" + preco + ", duracaoEstimada="
-				+ duracaoEstimada + "]";
+		return "Servico [idServico=" + idServico + ", tipoServico=" + tipoServico + ", descricaoServico="
+				+ descricaoServico + ", precoServico=" + precoServico + ", duracaoServico=" + duracaoServico + ", peca="
+				+ peca + ", responsavel=" + responsavel + "]";
 	}
-    
+
+
 }

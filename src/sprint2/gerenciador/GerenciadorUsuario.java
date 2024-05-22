@@ -24,12 +24,25 @@ public class GerenciadorUsuario {
     	String email;
     	Pattern patternTel = Pattern.compile("^(\\(\\d{2}\\)\\s*\\d{5}-\\d{4})|^(\\d{2}\\s*\\d{5}-\\d{4})$");
     	String telefone;
+    	Pattern patternCpf = Pattern.compile("^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$");
+    	String cpf;
     	
     	System.out.println("\n*-* CADASTRO USUÁRIO *-*");
         System.out.print("Digite o nome: ");
         String nomeUsuario = scanner.nextLine();
         System.out.print("Digite a senha: ");
         String senha = scanner.nextLine();
+        while (true) {
+        	System.out.print("Digite o CPF: ");
+            cpf = scanner.nextLine();
+            Matcher matcher = patternCpf.matcher(cpf);
+            if (matcher.matches()) {
+            	break;
+            } else {
+            	System.out.println("CPF inválido.");
+            	continue;
+            }
+        }
         while (true) {
         	System.out.print("Digite o email: ");
             email = scanner.nextLine();
@@ -52,7 +65,7 @@ public class GerenciadorUsuario {
             	continue;
             }
         }
-        Usuario usuario = new Usuario(nomeUsuario, senha, email, telefone);
+        Usuario usuario = new Usuario(cpf, nomeUsuario, senha, email, telefone);
         usuarios.add(usuario);
         System.out.println("\nUsuário cadastrado com sucesso!");
         return usuario;
@@ -123,6 +136,7 @@ public class GerenciadorUsuario {
     	System.out.println("\n*-* LISTA DE USUÁRIOS *-*\n");
     	for (Usuario usuario : usuarios) {
     		System.out.println("Nome: " + usuario.getNomeUsuario());
+    		System.out.println("CPF: " + usuario.getCpfUsuario());
     		System.out.println("Senha: " + usuario.getSenha());
     		System.out.println("E-mail: " + usuario.getEmail());
     		System.out.println("Telefone: " + usuario.getTelefone() + "\n");

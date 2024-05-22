@@ -30,6 +30,10 @@ public class GerenciadorFuncionario {
     	}
     }
     
+    public void alterarHorarioTrabalho(Funcionario funcionario, String novoHorarioTrabalho) {
+    	funcionario.setHorarioTrabalho(novoHorarioTrabalho);
+    }
+    
     public void adicionarFuncionario(Funcionario funcionario) {
     	funcionarios.add(funcionario);
     }
@@ -41,12 +45,13 @@ public class GerenciadorFuncionario {
     public void listarFuncionarios() {
     	System.out.println("\n*-* LISTA DE FUNCIONÁRIOS *-*\n");
     	for (Funcionario funcionario : funcionarios) {
-    		System.out.println("Matrícula: " + funcionario.getMatricula());
-    		System.out.println("Nome: " + funcionario.getNome());
+    		System.out.println("Matrícula: " + funcionario.getMatriculaFuncionario());
+    		System.out.println("Nome: " + funcionario.getNomeFuncionario());
     		System.out.println("Cargo: " + funcionario.getCargo().getNomeCargo());
     		System.out.println("Área do Cargo: " + funcionario.getCargo().getAreaCargo());
     		System.out.println("Oficina: " + funcionario.getCentroAutomotivo().getNomeCentro());
-    		System.out.println("Disponibilidade: " + (funcionario.isDisponibilidade() == true ? "Disponível" : "Indisponível") + "\n");
+    		System.out.println("Disponibilidade: " + (funcionario.isDisponibilidade() == true ? "Disponível" : "Indisponível"));
+    		System.out.println("Horário de trabalho: " + funcionario.getHorarioTrabalho() + "\n");
     	}
     }
     

@@ -50,7 +50,7 @@ public class GerenciadorVeiculo {
             boolean placaIgual = false;
             if (matcher.matches()) {
             	for (Veiculo veiculo : veiculosTotais) {
-            		if (veiculo.getPlaca().equals(placa)) {
+            		if (veiculo.getPlaca().equalsIgnoreCase(placa)) {
             			placaIgual = true;
             			System.out.println("A placa informada já está cadastrada no sistema.");
             		}

@@ -11,5 +11,18 @@ public class GerenciadorDiagnostico {
 		this.diagnosticos = new ArrayList<Diagnostico>();
 	}
 	
+	public void adicionarDiagnostico(Diagnostico diagnostico) {
+		diagnosticos.add(diagnostico);
+	}
 	
+	public void removerDiagnostico(Diagnostico diagnostico) {
+		diagnosticos.remove(diagnostico);
+	}
+	
+	public void listarDiagnosticos() {
+		System.out.println("\n*-* LISTA DE DIAGNÓSTICOS *-*\n");
+		for (Diagnostico diagnostico : diagnosticos) {
+			diagnostico.imprimirDiagnostico();
+		}
+	}
 }

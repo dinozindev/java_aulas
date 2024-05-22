@@ -25,13 +25,25 @@ public class GerenciadorAgendamento {
     	scanner = new Scanner(System.in);
     	Pattern regexHora = Pattern.compile("^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])(:([0-5][0-9]))?$");
     	Pattern regexData = Pattern.compile("^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])$");
+    	boolean marcou = false;
     	Agendamento agendamento = new Agendamento();
     	while (true) {
     		if (gu.getUsuarioLogado() != usuario) {
     			System.out.println("Você não está logado. Realize o login primeiro.");
     			break;
     		} else {
-    			 agendamento.setUsuario(usuario);
+    			for (Agendamento agendamentoDoUsuario : agendamentos) {
+    				if (agendamentoDoUsuario.getUsuario() == usuario) {
+    					marcou = true;
+    					System.out.println("Você já possui um agendamento marcado.");
+    					break;
+    				}
+    			}
+    			if (marcou == true) {
+    				break;
+    			} else {
+    				agendamento.setUsuario(usuario);
+    			}	
     		}
     		while (true) {
 	        	System.out.print("Qual a data do agendamento?: ");
@@ -61,14 +73,20 @@ public class GerenciadorAgendamento {
         		System.out.println("Qual serviço deseja agendar?: ");
         		String inputServico = scanner.nextLine();
         		for (Servico servico : gs.retornaListaServicos()) {
-        			if (servico.getDescricao().equalsIgnoreCase(inputServico)) {
-        				agendamento.setServico(servico); 
-        				break;
+        			if (servico.getDescricaoServico().equalsIgnoreCase(inputServico)) {
+        				if (servico.getPeca().isDisponibilidadePeca() == true) {
+        					agendamento.setServico(servico); 
+            				break;
+        				} else {
+        					System.out.println("A peça utilizada no serviço está indisponível.");
+        					break;
+        				}
         			} 
         		}
         		if (agendamento.getServico() != null) {
         			break;
         		} else {
+        			System.out.println("Serviço indisponível. Escolha outro.");
         			continue;
         		}
         	}
@@ -84,6 +102,7 @@ public class GerenciadorAgendamento {
         		if (agendamento.getCentro() != null) {
         			break;
         		} else {
+        			System.out.println("O Centro Automotivo informado não está registrado em nosso sistema.");
         			continue;
         		}
         	}
@@ -99,6 +118,7 @@ public class GerenciadorAgendamento {
         		if (agendamento.getVeiculo() != null) {
         			break;
         		} else {
+        			System.out.println("A placa informada está incorreta ou o veículo não foi registrado.");
         			continue;
         		}
         	}
@@ -112,15 +132,26 @@ public class GerenciadorAgendamento {
     	agendamentos.add(agendamento);
     }
     
+    public void removerAgendamento(Usuario usuario) {
+    	for (Agendamento agendamento : agendamentos) {
+    		if (agendamento.getUsuario() == usuario) {
+    			agendamentos.remove(agendamento);
+    		}
+    	}
+    	System.out.println("Você não possui nenhum agendamento para ser removido.");
+    }
+    
     public void imprimirAgendamentos() {
     	System.out.println("\n*-* LISTA DE AGENDAMENTOS *-*\n");
     	for (Agendamento agendamento : agendamentos) {
-    		System.out.println("Serviço: " + agendamento.getServico().getDescricao());
-    		System.out.println("Oficina: " + agendamento.getCentro().getNomeCentro());
-    		System.out.println("Data...: " + agendamento.getData());
-    		System.out.println("Horário: " + agendamento.getHora());
-    		System.out.println("Usuário: " + agendamento.getUsuario().getNomeUsuario());
-    		System.out.println("Veículo: " + agendamento.getVeiculo().getMarca() + " " + agendamento.getVeiculo().getModelo() + " " + agendamento.getVeiculo().getAno() + " " + agendamento.getVeiculo().getPlaca() + "\n");
+    		System.out.println("Serviço....: " + agendamento.getServico().getDescricaoServico());
+    		System.out.println("Peça.......: " + agendamento.getServico().getPeca().getNomePeca());
+    		System.out.println("Oficina....: " + agendamento.getCentro().getNomeCentro());
+    		System.out.println("Data.......: " + agendamento.getData());
+    		System.out.println("Horário....: " + agendamento.getHora());
+    		System.out.println("Usuário....: " + agendamento.getUsuario().getNomeUsuario());
+    		System.out.println("Veículo....: " + agendamento.getVeiculo().getMarca() + " " + agendamento.getVeiculo().getModelo() + " " + agendamento.getVeiculo().getAno() + " " + agendamento.getVeiculo().getPlaca());
+    		System.out.println("Técnico responsável: " + (agendamento.getServico().getResponsavel() != null ? agendamento.getServico().getResponsavel().getNomeFuncionario() : "Não especificado") + "\n");
     	}
     }
 }

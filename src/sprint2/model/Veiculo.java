@@ -59,4 +59,9 @@ public class Veiculo {
         this.quilometragem = quilometragem;
     }
 
+	public String toString() {
+		return "Veiculo [marca=" + marca + ", modelo=" + modelo + ", placa=" + placa + ", ano=" + ano
+				+ ", quilometragem=" + quilometragem + "]";
+	}
+
 }

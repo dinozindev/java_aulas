@@ -21,10 +21,10 @@ public class GerenciadorCentro {
     public void listarUnidades() {
         System.out.println("\n*-* LISTA DE UNIDADES *-*\n");
         for (CentroAutomotivo centroAutomotivo : this.centrosAutomotivos) {
-            System.out.println("ID: " + centroAutomotivo.getIdUnidade());
+            System.out.println("ID: " + centroAutomotivo.getIdCentro());
             System.out.println("Nome do Centro: " + centroAutomotivo.getNomeCentro());
-            System.out.println("Endereço: " + centroAutomotivo.getEndereco());
-            System.out.println("Telefone: " + centroAutomotivo.getTelefone());
+            System.out.println("Endereço: " + centroAutomotivo.getEnderecoCentro());
+            System.out.println("Telefone: " + centroAutomotivo.getTelefoneCentro());
             System.out.println("Horário de funcionamento: " + centroAutomotivo.getHorarioFuncionamento() + "\n");                   
         }
     }

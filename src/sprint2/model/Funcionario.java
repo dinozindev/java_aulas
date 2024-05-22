@@ -1,35 +1,37 @@
 package sprint2.model;
 
 public class Funcionario {
-    private int matricula;
-    private String nome;
+    private int matriculaFuncionario;
+    private String nomeFuncionario;
     private Cargo cargo;
     private CentroAutomotivo centroAutomotivo;
     private boolean disponibilidade;
+    private String horarioTrabalho;
 
-    public Funcionario(int matricula, String nome, Cargo cargo, CentroAutomotivo centroAutomotivo, boolean disponibilidade) {
-        this.matricula = matricula;
-        this.nome = nome;
+    public Funcionario(int matriculaFuncionario, String nomeFuncionario, Cargo cargo, CentroAutomotivo centroAutomotivo, boolean disponibilidade, String horarioTrabalho) {
+        this.matriculaFuncionario = matriculaFuncionario;
+        this.nomeFuncionario = nomeFuncionario;
         this.cargo = cargo;
         this.centroAutomotivo = centroAutomotivo;
         this.disponibilidade = disponibilidade;
+        this.horarioTrabalho = horarioTrabalho;
     }
 
 
-	public int getMatricula() {
-        return matricula;
+	public int getMatriculaFuncionario() {
+        return matriculaFuncionario;
     }
 
-    public void setMatricula(int matricula) {
-        this.matricula = matricula;
+    public void setMatriculaFuncionario(int matriculaFuncionario) {
+        this.matriculaFuncionario = matriculaFuncionario;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
     }
 
     public Cargo getCargo() {
@@ -56,9 +58,19 @@ public class Funcionario {
 		this.disponibilidade = disponibilidade;
 	}
 
+	public String getHorarioTrabalho() {
+		return horarioTrabalho;
+	}
+
+
+	public void setHorarioTrabalho(String horarioTrabalho) {
+		this.horarioTrabalho = horarioTrabalho;
+	}
+
 	public String toString() {
-		return "Funcionário [matricula=" + matricula + ", nome=" + nome + ", cargo=" + cargo
-				+ ", centroAutomotivo=" + centroAutomotivo + "]";
+		return "Funcionario [matriculaFuncionario=" + matriculaFuncionario + ", nomeFuncionario=" + nomeFuncionario
+				+ ", cargo=" + cargo + ", centroAutomotivo=" + centroAutomotivo + ", disponibilidade=" + disponibilidade
+				+ ", horarioTrabalho=" + horarioTrabalho + "]";
 	}
     
 }

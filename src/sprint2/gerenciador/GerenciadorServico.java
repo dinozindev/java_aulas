@@ -2,6 +2,7 @@ package sprint2.gerenciador;
 
 import java.util.ArrayList;
 
+import sprint2.model.Funcionario;
 import sprint2.model.Servico;
 
 public class GerenciadorServico {
@@ -11,7 +12,6 @@ public class GerenciadorServico {
     // Construtor
     public GerenciadorServico() {
         this.servicos = new ArrayList<Servico>();
-
     }
 
     // Métodos
@@ -23,13 +23,21 @@ public class GerenciadorServico {
     	servicos.remove(servico);
     }
     
+    public void adicionarResponsavel(Funcionario funcionario, Servico servico) {
+    	if (funcionario.getCargo().getNomeCargo().equalsIgnoreCase("Mecânico")) {
+    		servico.setResponsavel(funcionario);
+    	} else {
+    		System.out.println("Funcionário não é um mecânico.");
+    	}
+    }
+    
     public void listarServicos() {
     	System.out.println("\n*-* LISTA DE SERVIÇOS *-*\n");
         for (Servico servico: servicos) {
-        	System.out.println("Tipo do serviço: " + servico.getTipo());
-        	System.out.println("Descrição: " + servico.getDescricao());
-        	System.out.println("Preço: R$" + servico.getPreco());
-        	System.out.println("Duração estimada: " + servico.getDuracaoEstimada() + " minutos\n");
+        	System.out.println("Tipo do serviço: " + servico.getTipoServico());
+        	System.out.println("Descrição: " + servico.getDescricaoServico());
+        	System.out.println("Preço: R$" + servico.getPrecoServico());
+        	System.out.println("Duração estimada: " + servico.getDuracaoServico() + " minutos\n");
         }
     }
     
@@ -39,7 +47,7 @@ public class GerenciadorServico {
 
     public Servico retornaServico(String descricao) {
         for (Servico servico : this.servicos) {
-            if (servico.getDescricao().equalsIgnoreCase(descricao)) {
+            if (servico.getDescricaoServico().equalsIgnoreCase(descricao)) {
                 return servico;
             }
         }
