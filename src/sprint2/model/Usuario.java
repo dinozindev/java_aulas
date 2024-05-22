@@ -9,7 +9,6 @@ public class Usuario {
     private String email;
     private String telefone;
     private ArrayList<Veiculo> veiculos;
-    private Agendamento agendamento;
     
     public Usuario(String nomeUsuario, String senha, String email, String telefone) {
         this.nomeUsuario = nomeUsuario;
@@ -58,18 +57,10 @@ public class Usuario {
     public void setVeiculos(ArrayList<Veiculo> veiculos) {
         this.veiculos = veiculos;
     }
-    
-    public Agendamento getAgendamento() {
-		return agendamento;
-	}
-
-	public void setAgendamento(Agendamento agendamento) {
-		this.agendamento = agendamento;
-	}
 	
 
 	public String toString() {
-		return "Usuario [nomeUsuario=" + nomeUsuario + ", senha=" + senha + ", email=" + email + "]";
+		return "Usuario [nomeUsuario=" + nomeUsuario + ", senha=" + senha + ", email=" + email + ", telefone=" + telefone + "]";
 	}
 
 }

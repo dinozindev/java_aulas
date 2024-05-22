@@ -2,14 +2,27 @@ package sprint2.model;
 
 public class Diagnostico {
 	private int idDiagnostico;
-	private Problema problema;
+	private Usuario usuario;
+	private Veiculo veiculo;
+	private Peca peca;
+	private String descricaoSintomas;
 	private Servico solucao;
-	private String descricao;
+	private Orcamento orcamento;
+	private String gravidade;
+	private String categoria;
+	private String status;
 	
-	public Diagnostico(int idDiagnostico, Problema problema, String descricao) {
+	public Diagnostico(int idDiagnostico, Usuario usuario, Veiculo veiculo, Peca peca, String descricaoSintomas, Servico solucao, Orcamento orcamento, String gravidade, String categoria, String status) {
 		this.idDiagnostico = idDiagnostico;
-		this.problema = problema;
-		this.descricao = descricao;
+		this.usuario = usuario;
+		this.veiculo = veiculo;
+		this.peca = peca;
+		this.descricaoSintomas = descricaoSintomas;
+		this.solucao = solucao;
+		this.orcamento = orcamento;
+		this.gravidade = gravidade;
+		this.categoria = categoria;
+		this.status = status;
 	}
 
 	public int getIdDiagnostico() {
@@ -20,12 +33,36 @@ public class Diagnostico {
 		this.idDiagnostico = idDiagnostico;
 	}
 
-	public Problema getProblema() {
-		return problema;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setProblema(Problema problema) {
-		this.problema = problema;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+
+	public Peca getPeca() {
+		return peca;
+	}
+
+	public void setPeca(Peca peca) {
+		this.peca = peca;
+	}
+
+	public String getDescricaoSintomas() {
+		return descricaoSintomas;
+	}
+
+	public void setDescricaoSintomas(String descricaoSintomas) {
+		this.descricaoSintomas = descricaoSintomas;
 	}
 
 	public Servico getSolucao() {
@@ -36,18 +73,40 @@ public class Diagnostico {
 		this.solucao = solucao;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public Orcamento getOrcamento() {
+		return orcamento;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setOrcamento(Orcamento orcamento) {
+		this.orcamento = orcamento;
 	}
 
+	public String getGravidade() {
+		return gravidade;
+	}
+
+	public void setGravidade(String gravidade) {
+		this.gravidade = gravidade;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	
-	public String toString() {
-		return "AutoDiagnostico [idDiagnostico=" + idDiagnostico + ", problema=" + problema + ", solucao=" + solucao
-				+ ", descricao=" + descricao + "]";
-	}
+	
+	
+	
 	
 }

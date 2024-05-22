@@ -133,10 +133,10 @@ public class GerenciadorUsuario {
 		System.out.println("\n*-* VEÍCULOS DO USUÁRIO " + usuario.getNomeUsuario().toUpperCase() + " *-*\n");
     for (Veiculo veiculo : usuario.getVeiculos()) {
         System.out.println(veiculo.getMarca() + " " + veiculo.getModelo() + " (" + veiculo.getAno() + ", " + veiculo.getPlaca() + ", " + veiculo.getQuilometragem() + "km)");
+    	}
     }
-}
-   
-    public Usuario getUsuarioLogado() { // add this method
+    
+    public Usuario getUsuarioLogado() {
         return this.usuarioLogado;
     }
     

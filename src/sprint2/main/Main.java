@@ -131,6 +131,11 @@ public class Main {
         gerenciadorPecas.consultarDisponibilidadePeca(peca2);
         gerenciadorPecas.consultarDisponibilidadePeca(peca3);
         
+        // alterando a disponibilidade da peça
+        gerenciadorPecas.alterarDisponibilidadePeca(peca3);
+        System.out.println("\n*-* Alterando a disponibilidade da peca3 *-*");
+        System.out.println("\nDisponibilidade peca3: " + peca3.isDisponibilidadePeca());
+        
         // remove uma peça
         System.out.println("\n*-* Removendo peca3 da lista de peças *-*\n");
         gerenciadorPecas.removerPeca(peca3);
