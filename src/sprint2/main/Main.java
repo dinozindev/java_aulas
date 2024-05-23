@@ -72,17 +72,19 @@ public class Main {
     	
     	// adiciona unidades para a lista de centros automotivos
         GerenciadorCentro gerenciadorCentro = new GerenciadorCentro();
+        
+        System.out.println("*-* Adicionando Centros *-*\n");
         gerenciadorCentro.adicionarUnidade(centroAutomotivo1);
         gerenciadorCentro.adicionarUnidade(centroAutomotivo2);
         gerenciadorCentro.adicionarUnidade(centroAutomotivo3);
         gerenciadorCentro.listarUnidades();
         
         // remove centroAutomotivo da lista
-        System.out.println("\n*-* Removendo centroAutomotivo1 da lista de unidades *-*");
+        System.out.println("*-* Removendo centroAutomotivo1 da lista de unidades *-*\n");
         gerenciadorCentro.removerUnidade(centroAutomotivo1);
         gerenciadorCentro.listarUnidades();
         
-        System.out.println("\n===================================");
+        System.out.println("===================================");
     	
     	// Criação dos cargos
     	Cargo cargo1 = new Cargo(01, "Gerente", "Gerencia o Centro Automotivo", "Administrativa", 7000);
@@ -92,6 +94,9 @@ public class Main {
     	
     	 // adiciona os cargos a lista e imprime
         GerenciadorCargo gerenciadorCargo = new GerenciadorCargo();
+        
+        System.out.println("*-* Adicionando cargos *-*\n");
+        
         gerenciadorCargo.adicionarCargo(cargo1);
         gerenciadorCargo.adicionarCargo(cargo2);
         gerenciadorCargo.adicionarCargo(cargo3);
@@ -99,7 +104,7 @@ public class Main {
         gerenciadorCargo.listarCargos();
         
         // remove cargo da lista
-        System.out.println("*-* Removendo cargo 4 da lista *-*");
+        System.out.println("*-* Removendo cargo 4 da lista *-*\n");
         gerenciadorCargo.removerCargo(cargo4);
         gerenciadorCargo.listarCargos();
         
@@ -117,6 +122,8 @@ public class Main {
     	
     	// adiciona funcionários a lista de funcionários
     	GerenciadorFuncionario gerenciadorFuncionario = new GerenciadorFuncionario();
+    	
+    	System.out.println("*-* Adicionando funcionários *-*\n");
     	gerenciadorFuncionario.adicionarFuncionario(funcionario1);
     	gerenciadorFuncionario.adicionarFuncionario(funcionario2);
     	gerenciadorFuncionario.adicionarFuncionario(funcionario3);
@@ -130,7 +137,7 @@ public class Main {
         System.out.println("*-* Alterando dados do funcionario1 *-*\n");
         funcionario1.imprimirFuncionario();
         
-        System.out.println("\n*-* Remoção do funcionário2 da lista de funcionários *-*");
+        System.out.println("*-* Remoção do funcionário2 da lista de funcionários *-*\n");
         // remoção do funcionário
         gerenciadorFuncionario.removerFuncionario(funcionario2);
         gerenciadorFuncionario.listarFuncionarios();
@@ -139,6 +146,8 @@ public class Main {
         
      // Criação de serviços e adição deles na lista de serviços
     	GerenciadorServico gerenciadorServico = new GerenciadorServico();
+    	
+    	System.out.println("*-* Adicionando serviços *-*\n");
     	gerenciadorServico.adicionarServico(new Servico(1001, "Mecânica", "Troca de óleo", 100.0, 30, peca5));
     	gerenciadorServico.adicionarServico(new Servico(1002, "Mecânica", "Substituição das pastilhas de freio", 300.0, 60, peca2));
     	gerenciadorServico.adicionarServico(new Servico(1003, "Eletrônica", "Troca de bateria", 200.0, 30, peca4));
@@ -149,7 +158,7 @@ public class Main {
     	gerenciadorServico.listarServicos();
     	
     	
-    	System.out.println("*-* Removendo o servico2 da lista de serviços *-*");
+    	System.out.println("*-* Removendo o servico2 da lista de serviços *-*\n");
     	// remoção do serviço da lista
     	gerenciadorServico.removerServico(servico2);
     	gerenciadorServico.listarServicos();

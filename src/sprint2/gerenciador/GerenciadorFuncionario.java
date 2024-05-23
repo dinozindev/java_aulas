@@ -34,11 +34,14 @@ public class GerenciadorFuncionario {
     }
     
     public void adicionarFuncionario(Funcionario funcionario) {
+    	System.out.println("Funcionário adicionado a lista com sucesso.");
     	funcionarios.add(funcionario);
     }
     
     public void removerFuncionario(Funcionario funcionario) {
+    	System.out.println("Funcionário removido da lista com sucesso.");
     	funcionarios.remove(funcionario);
+    	
     }
     
     public void listarFuncionarios() {

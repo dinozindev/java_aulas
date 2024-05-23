@@ -11,10 +11,12 @@ public class GerenciadorCentro {
     }
 
     public void adicionarUnidade(CentroAutomotivo centroAutomotivo) {
+    	System.out.println("Centro adicionado a lista com sucesso.");
         this.centrosAutomotivos.add(centroAutomotivo);
     }
     
     public void removerUnidade(CentroAutomotivo centroAutomotivo) {
+    	System.out.println("Centro removido da lista com sucesso.");
     	this.centrosAutomotivos.remove(centroAutomotivo);
     }
 

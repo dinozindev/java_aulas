@@ -12,10 +12,12 @@ public class GerenciadorCargo {
 	}
 	
 	public void adicionarCargo(Cargo cargo) {
+		System.out.println("Cargo adicionado a lista com sucesso.");
 		cargos.add(cargo);
 	}
 	
 	public void removerCargo(Cargo cargo) {
+		System.out.println("Cargo removido da lista com sucesso.");
 		cargos.remove(cargo);
 	}
 	

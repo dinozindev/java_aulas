@@ -16,10 +16,12 @@ public class GerenciadorServico {
 
     // Métodos
     public void adicionarServico(Servico servico) {
+    	System.out.println("Serviço adicionado a lista com sucesso.");
     	servicos.add(servico);
     }
     
     public void removerServico(Servico servico) {
+    	System.out.println("Serviço removido da lista com sucesso.");
     	servicos.remove(servico);
     }
     
