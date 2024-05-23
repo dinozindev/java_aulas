@@ -34,10 +34,7 @@ public class GerenciadorServico {
     public void listarServicos() {
     	System.out.println("\n*-* LISTA DE SERVIÇOS *-*\n");
         for (Servico servico: servicos) {
-        	System.out.println("Tipo do serviço: " + servico.getTipoServico());
-        	System.out.println("Descrição: " + servico.getDescricaoServico());
-        	System.out.println("Preço: R$" + servico.getPrecoServico());
-        	System.out.println("Duração estimada: " + servico.getDuracaoServico() + " minutos\n");
+        	servico.imprimirServico();
         }
     }
     

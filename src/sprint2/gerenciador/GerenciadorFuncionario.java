@@ -1,14 +1,13 @@
 package sprint2.gerenciador;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import sprint2.model.Cargo;
 import sprint2.model.CentroAutomotivo;
 import sprint2.model.Funcionario;
 
 public class GerenciadorFuncionario {
-    private List<Funcionario> funcionarios;
+    private ArrayList<Funcionario> funcionarios;
 
     public GerenciadorFuncionario() {
     	this.funcionarios = new ArrayList<Funcionario>();
@@ -45,14 +44,12 @@ public class GerenciadorFuncionario {
     public void listarFuncionarios() {
     	System.out.println("\n*-* LISTA DE FUNCIONÁRIOS *-*\n");
     	for (Funcionario funcionario : funcionarios) {
-    		System.out.println("Matrícula: " + funcionario.getMatriculaFuncionario());
-    		System.out.println("Nome: " + funcionario.getNomeFuncionario());
-    		System.out.println("Cargo: " + funcionario.getCargo().getNomeCargo());
-    		System.out.println("Área do Cargo: " + funcionario.getCargo().getAreaCargo());
-    		System.out.println("Oficina: " + funcionario.getCentroAutomotivo().getNomeCentro());
-    		System.out.println("Disponibilidade: " + (funcionario.isDisponibilidade() == true ? "Disponível" : "Indisponível"));
-    		System.out.println("Horário de trabalho: " + funcionario.getHorarioTrabalho() + "\n");
+    		funcionario.imprimirFuncionario();
     	}
+    }
+    
+    public ArrayList<Funcionario> retornaListaFuncionarios() {
+    	return funcionarios;
     }
     
 }

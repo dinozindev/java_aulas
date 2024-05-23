@@ -135,12 +135,12 @@ public class GerenciadorUsuario {
     public void imprimirUsuarios() {
     	System.out.println("\n*-* LISTA DE USUÁRIOS *-*\n");
     	for (Usuario usuario : usuarios) {
-    		System.out.println("Nome: " + usuario.getNomeUsuario());
-    		System.out.println("CPF: " + usuario.getCpfUsuario());
-    		System.out.println("Senha: " + usuario.getSenha());
-    		System.out.println("E-mail: " + usuario.getEmail());
-    		System.out.println("Telefone: " + usuario.getTelefone() + "\n");
+    		usuario.imprimirUsuario();
     	}
+    }
+    
+    public ArrayList<Usuario> retornaListaUsuarios() {
+    	return usuarios;
     }
     
     public void listarVeiculosDoUsuario(Usuario usuario) {

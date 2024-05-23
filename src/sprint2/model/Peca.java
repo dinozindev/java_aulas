@@ -45,8 +45,10 @@ public class Peca {
 		this.precoPeca = precoPeca;
 	}
 
-	public String toString() {
-		return "Peca [idPeca=" + idPeca + ", disponibilidadePeca=" + disponibilidadePeca + ", nomePeca=" + nomePeca
-				+ ", precoPeca=" + precoPeca + "]";
+	public void imprimirPeca() {
+		System.out.println("ID: " + getIdPeca());
+		System.out.println("Nome: " + getNomePeca());
+		System.out.println("Preço: R$" + getPrecoPeca());
+		System.out.println("Disponibilidade: " + (isDisponibilidadePeca() == true ? "Disponível" : "Indisponível") + "\n");
 	}
 }

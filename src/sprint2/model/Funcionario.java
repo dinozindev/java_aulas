@@ -67,10 +67,14 @@ public class Funcionario {
 		this.horarioTrabalho = horarioTrabalho;
 	}
 
-	public String toString() {
-		return "Funcionario [matriculaFuncionario=" + matriculaFuncionario + ", nomeFuncionario=" + nomeFuncionario
-				+ ", cargo=" + cargo + ", centroAutomotivo=" + centroAutomotivo + ", disponibilidade=" + disponibilidade
-				+ ", horarioTrabalho=" + horarioTrabalho + "]";
+	public void imprimirFuncionario() {
+		System.out.println("Matrícula: " + getMatriculaFuncionario());
+		System.out.println("Nome: " + getNomeFuncionario());
+		System.out.println("Cargo: " + getCargo().getNomeCargo());
+		System.out.println("Área do Cargo: " + getCargo().getAreaCargo());
+		System.out.println("Oficina: " + getCentroAutomotivo().getNomeCentro());
+		System.out.println("Disponibilidade: " + (isDisponibilidade() == true ? "Disponível" : "Indisponível"));
+		System.out.println("Horário de trabalho: " + getHorarioTrabalho() + "\n");
 	}
     
 }

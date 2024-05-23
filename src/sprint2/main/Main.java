@@ -78,7 +78,7 @@ public class Main {
         gerenciadorCentro.listarUnidades();
         
         // remove centroAutomotivo da lista
-        System.out.println("*-* Removendo centroAutomotivo1 da lista de unidades *-*");
+        System.out.println("\n*-* Removendo centroAutomotivo1 da lista de unidades *-*");
         gerenciadorCentro.removerUnidade(centroAutomotivo1);
         gerenciadorCentro.listarUnidades();
         
@@ -106,7 +106,7 @@ public class Main {
         // retorna cargo com base no nome
         System.out.println("*-* Cargo 'Gerente' retornado com base em seu nome *-*\n");
         Cargo cargoTeste = gerenciadorCargo.retornaCargo("Gerente");
-        System.out.println(cargoTeste.toString());
+        cargoTeste.imprimirCargo();
         
         System.out.println("===================================");
     	
@@ -128,7 +128,7 @@ public class Main {
         gerenciadorFuncionario.alterarDisponibilidade(funcionario1);
         gerenciadorFuncionario.alterarHorarioTrabalho(funcionario1, "07:00 - 18:00");
         System.out.println("*-* Alterando dados do funcionario1 *-*\n");
-        System.out.println(funcionario1.toString());
+        funcionario1.imprimirFuncionario();
         
         System.out.println("\n*-* Remoção do funcionário2 da lista de funcionários *-*");
         // remoção do funcionário
@@ -143,6 +143,7 @@ public class Main {
     	gerenciadorServico.adicionarServico(new Servico(1002, "Mecânica", "Substituição das pastilhas de freio", 300.0, 60, peca2));
     	gerenciadorServico.adicionarServico(new Servico(1003, "Eletrônica", "Troca de bateria", 200.0, 30, peca4));
     	gerenciadorServico.adicionarServico(new Servico(1004, "Eletrônica", "Troca de lâmpadas", 50.0, 15, peca6));
+    	
     	Servico servico2 = new Servico(1001, "Manutenção Automotiva", "Troca do filtro de cabine", 79.99, 15, peca1);
     	gerenciadorServico.adicionarServico(servico2);
     	gerenciadorServico.listarServicos();
@@ -156,10 +157,10 @@ public class Main {
     	// obtenção de um serviço na lista através da descrição
     	System.out.println("*-* Obtenção do serviço pela descrição 'Troca de óleo' *-*\n");
     	Servico servico1 = gerenciadorServico.retornaServico("Troca de óleo");
-    	System.out.println("Serviço obtido: " + servico1.toString());
+    	servico1.imprimirServico();
     	
     	// adiciona responsável pelo serviço
-    	gerenciadorServico.adicionarResponsavel(funcionario3, servico2);
+    	gerenciadorServico.adicionarResponsavel(funcionario3, servico1);
     	
     	System.out.println("==================================================");
         
@@ -190,7 +191,11 @@ public class Main {
         gerenciadorUsuario.removerVeiculoDoUsuario(veiculo1, usuario1);
         gerenciadorUsuario.listarVeiculosDoUsuario(usuario1);
         
-        System.out.println("======================================");
+        // retorna lista com veículos de marca específica
+        System.out.println("\n*-* Retorna lista com veículos de uma marca específica cadastrados *-*");
+        gerenciadorVeiculo.buscarVeiculosPorMarca("Chevrolet");
+        
+        System.out.println("\n======================================");
         
         GerenciadorAgendamento gerenciadorAgendamento = new GerenciadorAgendamento();
         
@@ -219,8 +224,9 @@ public class Main {
         // imprime o diagnostico completo
         diagnostico1.imprimirDiagnostico();
         
-        System.out.println("======================================\n");
+        System.out.println("\n======================================\n");
         
+        System.out.println("*-* Removendo agendamento atual, iniciando agendamento com o diagnóstico criado *-*");
         // cancela agendamento atual, e agenda um novo usando as informações do diagnóstico.
         gerenciadorAgendamento.removerAgendamento(agendamento1);
         Agendamento agendamentoDiagnostico = gerenciadorAgendamento.agendarComDiagnostico(diagnostico1, gerenciadorUsuario, gerenciadorCentro);

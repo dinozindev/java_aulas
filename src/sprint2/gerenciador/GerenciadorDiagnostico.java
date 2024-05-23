@@ -19,6 +19,10 @@ public class GerenciadorDiagnostico {
 		diagnosticos.remove(diagnostico);
 	}
 	
+	public ArrayList<Diagnostico> retornaListaDiagnosticos() {
+		return diagnosticos;
+	}
+	
 	public void listarDiagnosticos() {
 		System.out.println("\n*-* LISTA DE DIAGNÓSTICOS *-*\n");
 		for (Diagnostico diagnostico : diagnosticos) {

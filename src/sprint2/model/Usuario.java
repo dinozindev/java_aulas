@@ -68,9 +68,12 @@ public class Usuario {
         this.veiculos = veiculos;
     }
 
-	public String toString() {
-		return "Usuario [cpfUsuario=" + cpfUsuario + ", nomeUsuario=" + nomeUsuario + ", senha=" + senha + ", email="
-				+ email + ", telefone=" + telefone + ", veiculos=" + veiculos + "]";
+	public void imprimirUsuario() {
+		System.out.println("Nome: " + getNomeUsuario());
+		System.out.println("CPF: " + getCpfUsuario());
+		System.out.println("Senha: " + getSenha());
+		System.out.println("E-mail: " + getEmail());
+		System.out.println("Telefone: " + getTelefone() + "\n");
 	}
 	
 

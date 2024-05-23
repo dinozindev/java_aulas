@@ -18,7 +18,7 @@ public class GerenciadorVeiculo {
     
     public Veiculo criarVeiculo() {
     	Pattern patternPlaca = Pattern.compile("^[A-Z]{3}-[0-9]{1}[A-Z]{1}[0-9]{2}$");
-    	Pattern patternAno = Pattern.compile("^(188[6-9]|189[0-9]|19[0-9][0-9]|20[0-1][0-9]|202[0-4])");
+    	Pattern patternAno = Pattern.compile("^(19[8-9][0-9]|20[0-1][0-9]|202[0-4])$");
     	int anoConvertido;
     	String placa;
     	double quilometragem;
@@ -29,9 +29,9 @@ public class GerenciadorVeiculo {
         String marca = scanner.nextLine();
         System.out.print("Digite o modelo do veículo: ");
         String modelo = scanner.nextLine();
-        // se o ano não estiver entre 1886 e 2024, repete
+        // se o ano não estiver entre 1980 e 2024, repete
         while (true) {
-        	System.out.print("Digite o ano do veículo (entre 1886 e 2024): ");
+        	System.out.print("Digite o ano do veículo (entre 1980 e 2024): ");
         	String ano = scanner.nextLine(); 
         	Matcher matcher = patternAno.matcher(ano);
         	
@@ -94,17 +94,21 @@ public class GerenciadorVeiculo {
     public void listarVeiculosCadastrados() {
     	System.out.println("*-* VEÍCULOS CADASTRADOS *-*");
     	for (Veiculo veiculo: veiculosTotais) {
-    		System.out.println(veiculo.getMarca() + " " + veiculo.getModelo() + " (" + veiculo.getAno() + ", " + veiculo.getPlaca() + ", " + veiculo.getQuilometragem() + "km)");
+    		veiculo.imprimirVeiculo();
     	}
     }
+    
+    public ArrayList<Veiculo> retornaListaVeiculos() {
+    	return veiculosTotais;
+    }
 
-    public ArrayList<Veiculo> buscarVeiculosPorModelo(String modelo) {
-        ArrayList<Veiculo> veiculosEncontrados = new ArrayList<>();
+    public void buscarVeiculosPorMarca(String marca) {
+    	System.out.println("\n*-* VEÍCULOS DA MARCA " + marca.toUpperCase() + " *-*\n");
         for (Veiculo veiculo : veiculosTotais) {
-            if (veiculo.getModelo().equalsIgnoreCase(modelo)) {
-                veiculosEncontrados.add(veiculo);
+            if (veiculo.getMarca().equalsIgnoreCase(marca)) {
+            	veiculo.imprimirVeiculo();
             }
         }
-        return veiculosEncontrados;
+    
     }
 }

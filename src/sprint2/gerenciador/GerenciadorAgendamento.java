@@ -1,7 +1,6 @@
 package sprint2.gerenciador;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,7 +13,7 @@ import sprint2.model.Usuario;
 import sprint2.model.Veiculo;
 
 public class GerenciadorAgendamento {
-    private List<Agendamento> agendamentos;
+    private ArrayList<Agendamento> agendamentos;
     private Scanner scanner;
     
     public GerenciadorAgendamento() {
@@ -212,18 +211,14 @@ public class GerenciadorAgendamento {
     	agendamentos.remove(agendamento);
     }
     
+    public ArrayList<Agendamento> retornaListaAgendamentos() {
+    	return agendamentos;
+    }
+    
     public void imprimirAgendamentos() {
     	System.out.println("\n*-* LISTA DE AGENDAMENTOS *-*\n");
     	for (Agendamento agendamento : agendamentos) {
-    		System.out.println("ID Agendamento: " + agendamento.getIdAgendamento());
-    		System.out.println("Serviço.......: " + agendamento.getServico().getDescricaoServico());
-    		System.out.println("Peça..........: " + agendamento.getServico().getPeca().getNomePeca());
-    		System.out.println("Oficina.......: " + agendamento.getCentro().getNomeCentro());
-    		System.out.println("Data..........: " + agendamento.getData());
-    		System.out.println("Horário.......: " + agendamento.getHora());
-    		System.out.println("Usuário.......: " + agendamento.getUsuario().getNomeUsuario());
-    		System.out.println("Veículo.......: " + agendamento.getVeiculo().getMarca() + " " + agendamento.getVeiculo().getModelo() + " " + agendamento.getVeiculo().getAno() + " " + agendamento.getVeiculo().getPlaca());
-    		System.out.println("Técnico responsável: " + (agendamento.getServico().getResponsavel() != null ? agendamento.getServico().getResponsavel().getNomeFuncionario() : "Não especificado") + "\n");
+    		agendamento.imprimirAgendamento();
     	}
     }
 }

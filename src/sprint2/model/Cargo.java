@@ -55,8 +55,11 @@ public class Cargo {
 		this.salarioCargo = salarioCargo;
 	}
 
-	public String toString() {
-		return "Cargo [idCargo=" + idCargo + ", nomeCargo=" + nomeCargo + ", descricaoCargo=" + descricaoCargo
-				+ ", areaCargo=" + areaCargo + ", salarioCargo=" + salarioCargo + "]";
+	public void imprimirCargo() {
+		System.out.println("ID: " + getIdCargo());
+		System.out.println("Nome do Cargo: " + getNomeCargo());
+		System.out.println("Descrição: " + getDescricaoCargo());
+		System.out.println("Área do Cargo: " + getAreaCargo());
+		System.out.println("Salário: R$" + getSalarioCargo() + "\n");
 	}
 }

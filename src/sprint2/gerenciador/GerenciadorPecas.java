@@ -32,11 +32,12 @@ public class GerenciadorPecas {
 	public void listarPecas() {
 		System.out.println("\n*-* LISTA DE PEÇAS *-*\n");
 		for (Peca peca : this.pecas) {
-			System.out.println("ID: " + peca.getIdPeca());
-			System.out.println("Nome: " + peca.getNomePeca());
-			System.out.println("Preço: R$" + peca.getPrecoPeca());
-			System.out.println("Disponibilidade: " + (peca.isDisponibilidadePeca() == true ? "Disponível" : "Indisponível") + "\n");
+			peca.imprimirPeca();
 		}
+	}
+	
+	public ArrayList<Peca> retornaListaPecas() {
+		return pecas;
 	}
 	
 	public void consultarDisponibilidadePeca(Peca pecaSolicitada) {

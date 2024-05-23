@@ -93,10 +93,16 @@ public class Agendamento {
 		this.idAgendamento = idAgendamento;
 	}
 
-	public String toString() {
-		return "Agendamento [idAgendamento=" + idAgendamento + ", data=" + data + ", hora=" + hora + ", descricao="
-				+ descricao + ", centro=" + centro + ", servico=" + servico + ", usuario=" + usuario + ", veiculo="
-				+ veiculo + "]";
+	public void imprimirAgendamento() {
+		System.out.println("ID Agendamento: " + getIdAgendamento());
+		System.out.println("Serviço.......: " + getServico().getDescricaoServico());
+		System.out.println("Peça..........: " + getServico().getPeca().getNomePeca());
+		System.out.println("Oficina.......: " + getCentro().getNomeCentro());
+		System.out.println("Data..........: " + getData());
+		System.out.println("Horário.......: " + getHora());
+		System.out.println("Usuário.......: " + getUsuario().getNomeUsuario());
+		System.out.println("Veículo.......: " + getVeiculo().getMarca() + " " + getVeiculo().getModelo() + " " + getVeiculo().getAno() + " " + getVeiculo().getPlaca());
+		System.out.println("Técnico responsável: " + (getServico().getResponsavel() != null ? getServico().getResponsavel().getNomeFuncionario() : "Não especificado") + "\n");
 	}
 
 	

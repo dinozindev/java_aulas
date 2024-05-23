@@ -55,9 +55,12 @@ public class CentroAutomotivo {
         this.horarioFuncionamento = horarioFuncionamento;
     }
 
-	public String toString() {
-		return "CentroAutomotivo [idCentro=" + idCentro + ", nomeCentro=" + nomeCentro + ", enderecoCentro=" + enderecoCentro
-				+ ", telefoneCentro=" + telefoneCentro + ", horarioFuncionamento=" + horarioFuncionamento + "]";
+	public void imprimirCentro() {
+		System.out.println("ID: " + getIdCentro());
+        System.out.println("Nome do Centro: " + getNomeCentro());
+        System.out.println("Endereço: " + getEnderecoCentro());
+        System.out.println("Telefone: " + getTelefoneCentro());
+        System.out.println("Horário de funcionamento: " + getHorarioFuncionamento() + "\n");    
 	}
 
     

@@ -22,12 +22,12 @@ public class GerenciadorCargo {
 	public void listarCargos() {
 		System.out.println("\n*-* LISTA DE CARGOS *-*\n");
 		for (Cargo cargo : cargos) {
-			System.out.println("ID: " + cargo.getIdCargo());
-			System.out.println("Nome do Cargo: " + cargo.getNomeCargo());
-			System.out.println("Descrição: " + cargo.getDescricaoCargo());
-			System.out.println("Área do Cargo: " + cargo.getAreaCargo());
-			System.out.println("Salário: R$" + cargo.getSalarioCargo() + "\n");
+			cargo.imprimirCargo();
 		}
+	}
+	
+	public ArrayList<Cargo> retornaListaCargos() {
+		return cargos;
 	}
 	
 	public Cargo retornaCargo(String nomeCargo) {

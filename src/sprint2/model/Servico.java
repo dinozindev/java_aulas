@@ -74,10 +74,11 @@ public class Servico {
 		this.responsavel = responsavel;
 	}
 
-	public String toString() {
-		return "Servico [idServico=" + idServico + ", tipoServico=" + tipoServico + ", descricaoServico="
-				+ descricaoServico + ", precoServico=" + precoServico + ", duracaoServico=" + duracaoServico + ", peca="
-				+ peca + ", responsavel=" + responsavel + "]";
+	public void imprimirServico() {
+		System.out.println("Tipo do serviço: " + getTipoServico());
+    	System.out.println("Descrição: " + getDescricaoServico());
+    	System.out.println("Preço: R$" + getPrecoServico());
+    	System.out.println("Duração estimada: " + getDuracaoServico() + " minutos\n");
 	}
 
 
