@@ -1,32 +1,48 @@
 package gs.gerenciador;
 
 import gs.model.IlhaLixo;
+import gs.model.Organizacao;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class GerenciadorIlhaLixo {
 
-    private List<IlhaLixo> listaIlhas;
+    private ArrayList<IlhaLixo> listaIlhas;
 
     public GerenciadorIlhaLixo() {
-        this.listaIlhas = new ArrayList<>();
+        this.listaIlhas = new ArrayList<IlhaLixo>();
     }
 
     public void adicionarIlha(IlhaLixo ilha) {
+    	System.out.println("Ilha de lixo adicionada com sucesso.");
         listaIlhas.add(ilha);
     }
-
-    public void verificarStatusLimpeza(IlhaLixo ilha) {
-        if (ilha.isStatusLimpeza()) {
-            System.out.println("A ilha " + ilha.getLocalizacao() + " está limpa.");
-        } else {
-            System.out.println("A ilha " + ilha.getLocalizacao() + " não está limpa.");
-        }
+    
+    public void removerIlha(IlhaLixo ilha) {
+    	System.out.println("Ilha de lixo removida com sucesso.");
+    	listaIlhas.remove(ilha);
+    }
+    
+    public void adicionarOrganizacaoColaboradora(Organizacao organizacao, IlhaLixo ilhaLixo) {
+    	ilhaLixo.getOrganizacoesAssociadas().add(organizacao);
+    	System.out.println("Organização colaboradora adicionada a ilha de lixo.");
+    }
+    
+    public void listarOrganizacoesIlhaLixo(IlhaLixo ilhaLixo) {
+    	System.out.println("\n*-* LISTA DE ORGANIZAÇÕES AUXILIANDO A ILHA DE LIXO " + ilhaLixo.getIdIlhaLixo() + " *-*\n");
+    	for (Organizacao organizacao : ilhaLixo.getOrganizacoesAssociadas()) {
+    		organizacao.imprimirOrganizacao();
+    	}
     }
 
-    public void listarIlhas() {
-        for (IlhaLixo ilha : listaIlhas) {
-            System.out.println("ID: " + ilha.getIdIlha() + " - Localização: " + ilha.getLocalizacao() + " - Tamanho: " + ilha.getTamanho() + " - Tipo de Lixo: " + ilha.getTipoLixo());
-        }
-    }
+   public void listarIlhasLixo() {
+	   System.out.println("\n*-* LISTA DE ILHAS DE LIXO *-*\n");
+	   for (IlhaLixo il : listaIlhas) {
+		   il.imprimirIlhaLixo();
+	   }
+   }
+   
+   public ArrayList<IlhaLixo> retornarIlhasLixo() {
+	   return listaIlhas;
+   }
 }

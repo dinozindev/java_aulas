@@ -49,7 +49,7 @@ public class Recompensa {
     	System.out.println("ID: " + getIdRecompensa());
     	System.out.println("Descrição da recompensa: " + getDescricaoRecompensa());
     	System.out.println("Pontos necessários: " + getPontoNecessario());
-    	System.out.println("Tipo de recompensa: " + getTipoRecompensa());
+    	System.out.println("Tipo de recompensa: " + getTipoRecompensa() + "\n");
     	
     }
 }

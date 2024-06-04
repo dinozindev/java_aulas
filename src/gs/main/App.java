@@ -8,8 +8,11 @@ import gs.gerenciador.GerenciadorOrganizacao;
 import gs.gerenciador.GerenciadorRecibo;
 import gs.gerenciador.GerenciadorRecompensa;
 import gs.gerenciador.GerenciadorReconhecimentoImagem;
+import gs.model.DenunciaPescaIlegal;
+import gs.model.DenunciaPoluicao;
 import gs.model.Doacao;
 import gs.model.EspecieMarinha;
+import gs.model.IlhaLixo;
 import gs.model.Organizacao;
 import gs.model.Recibo;
 import gs.model.Recompensa;
@@ -72,8 +75,34 @@ public class App {
         gerenciadorOrg.adicionarPontosOrganizacao(org2, 120);
         org2.imprimirOrganizacao();
         
+        System.out.println("============== { ILHAS DE LIXO } ==============\n");
+        
+        IlhaLixo il1 = new IlhaLixo(4001, "25.0343°N, 71.4467°W", "Em andamento", "Grande", "Plástico");
+        IlhaLixo il2 = new IlhaLixo(4002, "0.8250°S, 91.1347°W", "Finalizando", "Média", "Plástico e Metais");
+        IlhaLixo il3 = new IlhaLixo(4003, "40.7650°N, 76.4532°W", "Em andamento", "Pequena", "Plástico");
+        
+        System.out.println("*-* Adicionando ilhas de lixo a lista *-*\n");
+        gerenciadorIlhaLixo.adicionarIlha(il1);
+        gerenciadorIlhaLixo.adicionarIlha(il2);
+        gerenciadorIlhaLixo.adicionarIlha(il3);
+        
+        gerenciadorIlhaLixo.listarIlhasLixo();
+        
+        System.out.println("*-* Removendo ilha de lixo il3 *-*\n");
+        
+        gerenciadorIlhaLixo.removerIlha(il3);
+        
+        gerenciadorIlhaLixo.listarIlhasLixo();
+        
+        System.out.println("*-* Adicionando Organização que auxiliará na limpeza da ilha de lixo *-*\n");
+        
+        gerenciadorIlhaLixo.adicionarOrganizacaoColaboradora(org, il2);
+        
+        gerenciadorIlhaLixo.listarOrganizacoesIlhaLixo(il2);
+        
+        
         // ESPECIES MARINHAS
-        System.out.println("\n============== { ESPÉCIES MARINHAS } ==============\n");
+        System.out.println("============== { ESPÉCIES MARINHAS } ==============\n");
         
         EspecieMarinha esp1 = new EspecieMarinha(0001, "Tartaruga-verde", "Chelonia mydas", "Em Perigo", "A tartaruga-verde é uma grande tartaruga marinha encontrada principalmente em mares tropicais e subtropicais. É herbívora e se alimenta principalmente de algas e ervas marinhas.");
         EspecieMarinha esp2 = new EspecieMarinha(0002, "Baleia-azul", "Balaenoptera musculus", "Em Perigo", "A baleia-azul é o maior animal conhecido a ter existido, podendo atingir mais de 30 metros de comprimento. Alimenta-se principalmente de krill e outras pequenas criaturas marinhas.");
@@ -105,13 +134,17 @@ public class App {
         
         //USUARIO
         
-        System.out.println("\n============== { USUÁRIO } ==============\n");
+        System.out.println("\n============== { USUÁRIO } ==============");
         
         // cadastro usuario
         Usuario usuario1 = gerenciadorUsuario.cadastrar();
         
+        System.out.println("\n*-* Imprimindo usuário *-*\n");
+        // imprimindo usuario
+        usuario1.imprimirUsuario();
+        
         // tentando deslogar sem estar logado
-        System.out.println("\n*-* Tentando deslogar sem estar logado *-*\n");
+        System.out.println("*-* Tentando deslogar sem estar logado *-*\n");
         gerenciadorUsuario.logout();
         
         // login usuario
@@ -122,28 +155,97 @@ public class App {
         //DOAÇÃO
         // criando nova doação
         Doacao doacao = new Doacao(100001, "07/06", "13:39", 134.39, "Cartão de Débito", usuario1);
+        Doacao doacao2 = new Doacao(100002, "07/06", "13:45", 204.99, "Pix", usuario1);
         gerenciadorDoacao.adicionarDoacao(doacao);
+        gerenciadorDoacao.adicionarDoacao(doacao2);
         
         // imprimindo doações
         gerenciadorDoacao.listarDoacoes();
         
         // somando a doação as doações atuais do usuario e atribuindo 
-        double doacaoAtual = gerenciadorUsuario.somar(0.0, doacao.getQuantiaDoacao());
+        double doacaoAtual = gerenciadorUsuario.somar(usuario1.getValorDoado(), doacao.getQuantiaDoacao());
         usuario1.setValorDoado(doacaoAtual);
-        System.out.println("*-* Adicionando o valor da doação para o total doado do usuário *-*");
+        System.out.println("*-* Adicionando o valor da doação para o total doado do usuário *-*\n");
+        System.out.println("Valor doado: R$" + usuario1.getValorDoado() + "\n");
+        doacaoAtual = gerenciadorUsuario.somar(usuario1.getValorDoado(), doacao2.getQuantiaDoacao());
+        usuario1.setValorDoado(doacaoAtual);
         System.out.println("Valor doado: R$" + usuario1.getValorDoado() + "\n");
         
         // criando recibo e imprimindo
         Recibo recibo = gerenciadorRecibo.gerarRecibo(doacao);
+        Recibo recibo2 = gerenciadorRecibo.gerarRecibo(doacao2);
         gerenciadorRecibo.adicionarRecibo(recibo);
+        gerenciadorRecibo.adicionarRecibo(recibo2);
         gerenciadorRecibo.listarRecibos();
+        
+        System.out.println("\n============== { RECOMPENSA } ==============\n");
         
         //RECOMPENSA
         // Cria recompensas
-        Recompensa recompensa1 = new Recompensa(1,8500,"troféu, viagem de cruzeiro");
-        Recompensa recompensa2 = new Recompensa(2,500,"certificado, boné e camiseta personalizado");
-        Recompensa recompensa3 = new Recompensa(3,2300,"viagem em frente a praia");
-
+        Recompensa recompensa1 = new Recompensa(1001,"Benefício", 100, "20% de desconto em empresas parceiras.");
+        Recompensa recompensa2 = new Recompensa(1002,"Camiseta", 500, "Camiseta personalizada da Ecocean");
+        Recompensa recompensa3 = new Recompensa(1003,"Benefício", 50, "10% de desconto em empresas parceiras.");
+        Recompensa recompensa4 = new Recompensa(1004, "Benefício", 25, "50 usos de reconhecimento de imagem gratuitos.");
+        
+        // adiciona as recompensas na lista.
+        gerenciadorRecompensa.cadastrarRecompensa(recompensa1);
+        gerenciadorRecompensa.cadastrarRecompensa(recompensa2);
+        gerenciadorRecompensa.cadastrarRecompensa(recompensa3);
+        gerenciadorRecompensa.cadastrarRecompensa(recompensa4);
+        
+        gerenciadorRecompensa.listarRecompensas();
+        
+        // tentando resgatar uma recompensa sem pontos suficientes
+        System.out.println("*-* Tentando resgatar uma recompensa sem pontos suficientes *-*\n");
+        gerenciadorRecompensa.obterRecompensaUsuario(usuario1, recompensa4, gerenciadorUsuario);
+        
+        // tentando resgatar uma recompensa com pontos suficientes
+        System.out.println("\n*-* Tentando resgatar uma recompensa com pontos suficientes *-*\n");
+        int pontosAtuais = gerenciadorUsuario.somar(usuario1.getPontosUsuario(), 50);
+        usuario1.setPontosUsuario(pontosAtuais);
+        
+        // resgatando recompensa e adicionando a lista de recompensas do usuário
+        Recompensa recompensaResgatada = gerenciadorRecompensa.obterRecompensaUsuario(usuario1, recompensa3, gerenciadorUsuario);
+        gerenciadorUsuario.adicionarRecompensaUsuario(recompensaResgatada, usuario1);
+        
+        // listando recompensas obtidas pelo usuario
+        gerenciadorUsuario.listarRecompensasUsuario(usuario1);
+        
+        System.out.println("\n============== { DENÚNCIA DE PESCA ILEGAL E POLUIÇÃO } ==============\n");
+        
+        // realiza denuncia de pesca ilegal
+        DenunciaPescaIlegal dpi = gerenciadorDenuncia.realizarDenunciaPescaIlegal(usuario1, gerenciadorUsuario);
+        
+        // imprime denuncia de pesca ilegal
+        System.out.println("*-* Informações da denúncia de pesca ilegal *-*\n");
+        dpi.imprimirDenuncia();
+        
+        // a cada denuncia feita, o usuario recebe 10 pontos
+        System.out.println("\nPontos obtidos após realização de uma denúncia: "+ usuario1.getPontosUsuario());
+        
+        // adicionando a denuncia a lista de denuncias
+        gerenciadorDenuncia.cadastrarDenuncia(dpi);
+        
+        // realiza denuncia de poluição
+        DenunciaPoluicao dpo = gerenciadorDenuncia.realizarDenunciaPoluicao(usuario1, gerenciadorUsuario);
+        
+        // imprime denuncia de pesca poluição
+        System.out.println("*-* Informações da denúncia de poluição *-*\n");
+        dpo.imprimirDenuncia();
+        
+        // a cada denuncia feita, o usuario recebe 10 pontos acrescentados ao que ele já tem.
+        System.out.println("Pontos obtidos após realização de uma denúncia: "+ usuario1.getPontosUsuario());
+        
+        // adicionando a denuncia a lista de denuncias
+        gerenciadorDenuncia.cadastrarDenuncia(dpo);
+        
+        // listando denuncias
+        gerenciadorDenuncia.listarDenuncias();
+        
+        System.out.println("\n============== { RECONHECIMENTO DE IMAGEM } ==============\n");
+        
+        
+        
 
 
 

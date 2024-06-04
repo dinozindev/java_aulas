@@ -1,5 +1,7 @@
 package gs.model;
 
+import java.util.ArrayList;
+
 public class Usuario {
     private String cpfUsuario;
     private String nomeUsuario;
@@ -8,6 +10,7 @@ public class Usuario {
     private int pontosUsuario;
     private double valorDoado;
     private String senhaUsuario;
+    private ArrayList<Recompensa> recompensasObtidas;
     
     public Usuario(String cpfUsuario, String nomeUsuario, String emailUsuario, String telUsuario, String senhaUsuario) {
     	this.cpfUsuario = cpfUsuario;
@@ -17,6 +20,7 @@ public class Usuario {
     	this.senhaUsuario = senhaUsuario;
     	this.valorDoado = 0;
     	this.pontosUsuario = 0;
+    	recompensasObtidas = new ArrayList<Recompensa>();
     }
 
 	public String getCpfUsuario() {
@@ -73,6 +77,14 @@ public class Usuario {
 
 	public void setValorDoado(double valorDoado) {
 		this.valorDoado = valorDoado;
+	}
+
+	public ArrayList<Recompensa> getRecompensasObtidas() {
+		return recompensasObtidas;
+	}
+
+	public void setRecompensasObtidas(ArrayList<Recompensa> recompensasObtidas) {
+		this.recompensasObtidas = recompensasObtidas;
 	}
 
 	public void imprimirUsuario() {
