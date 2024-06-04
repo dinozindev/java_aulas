@@ -122,10 +122,12 @@ public class GerenciadorUsuario {
     }
     
     // exemplo de sobrecarga
+    // metodo operacional que soma os pontos atuais do usuario + pontos recebidos
     public int somar(int pontosAdicionais, int pontosAtuais) {
     		return pontosAdicionais += pontosAtuais;
     }
     
+    // metodo operacional que soma o valor doado atual do usuario + valor novo
     public double somar(double valorDoadoAtual, double valorDoadoAdicional) {
     		return valorDoadoAtual += valorDoadoAdicional;
     }

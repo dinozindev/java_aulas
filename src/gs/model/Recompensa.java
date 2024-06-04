@@ -6,8 +6,9 @@ public class Recompensa {
     private int pontoNecessario;
     private String descricaoRecompensa;
 
-    public Recompensa(int idRecompensa, int pontoNecessario, String descricaoRecompensa) {
+    public Recompensa(int idRecompensa, String tipoRecompensa, int pontoNecessario, String descricaoRecompensa) {
         this.idRecompensa = idRecompensa;
+        this.tipoRecompensa = tipoRecompensa;
         this.pontoNecessario = pontoNecessario;
         this.descricaoRecompensa = descricaoRecompensa;
     }
@@ -42,5 +43,13 @@ public class Recompensa {
 
     public void setTipoRecompensa(String tipoRecompensa) {
         this.tipoRecompensa = tipoRecompensa;
+    }
+    
+    public void imprimirRecompensa() {
+    	System.out.println("ID: " + getIdRecompensa());
+    	System.out.println("Descrição da recompensa: " + getDescricaoRecompensa());
+    	System.out.println("Pontos necessários: " + getPontoNecessario());
+    	System.out.println("Tipo de recompensa: " + getTipoRecompensa());
+    	
     }
 }
