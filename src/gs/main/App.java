@@ -16,6 +16,7 @@ import gs.model.IlhaLixo;
 import gs.model.Organizacao;
 import gs.model.Recibo;
 import gs.model.Recompensa;
+import gs.model.ReconhecimentoImagem;
 import gs.model.Usuario;
 import gs.gerenciador.GerenciadorUsuario;
 
@@ -211,7 +212,22 @@ public class App {
         // listando recompensas obtidas pelo usuario
         gerenciadorUsuario.listarRecompensasUsuario(usuario1);
         
-        System.out.println("\n============== { DENÚNCIA DE PESCA ILEGAL E POLUIÇÃO } ==============\n");
+        System.out.println("\n============== { RECONHECIMENTO DE IMAGEM } ==============\n");
+        
+        // criando reconhecimento de imagem
+        ReconhecimentoImagem ri1 = new ReconhecimentoImagem(6001, "07/06", esp3, "jpg", "imagem_peixe_palhaco", usuario1);
+        
+        // adicionando reconhecimentos a lista
+        
+        gerenciadorRecEspec.adicionarReconhecimento(ri1);
+        
+        // imprime o reconhecimento
+        System.out.println("\n*-* Imprimindo o reconhecimento do peixe-palhaço *-*\n");
+        ri1.imprimirReconhecimento();
+        
+        gerenciadorRecEspec.visualizarInformacoesEspecie(ri1);
+        
+        System.out.println("============== { DENÚNCIA DE PESCA ILEGAL E POLUIÇÃO } ==============\n");
         
         // realiza denuncia de pesca ilegal
         DenunciaPescaIlegal dpi = gerenciadorDenuncia.realizarDenunciaPescaIlegal(usuario1, gerenciadorUsuario);
@@ -221,7 +237,7 @@ public class App {
         dpi.imprimirDenuncia();
         
         // a cada denuncia feita, o usuario recebe 10 pontos
-        System.out.println("\nPontos obtidos após realização de uma denúncia: "+ usuario1.getPontosUsuario());
+        System.out.println("\nPontos totais do usuário: "+ usuario1.getPontosUsuario());
         
         // adicionando a denuncia a lista de denuncias
         gerenciadorDenuncia.cadastrarDenuncia(dpi);
@@ -234,7 +250,7 @@ public class App {
         dpo.imprimirDenuncia();
         
         // a cada denuncia feita, o usuario recebe 10 pontos acrescentados ao que ele já tem.
-        System.out.println("Pontos obtidos após realização de uma denúncia: "+ usuario1.getPontosUsuario());
+        System.out.println("Pontos totais do usuário: "+ usuario1.getPontosUsuario());
         
         // adicionando a denuncia a lista de denuncias
         gerenciadorDenuncia.cadastrarDenuncia(dpo);
@@ -242,7 +258,8 @@ public class App {
         // listando denuncias
         gerenciadorDenuncia.listarDenuncias();
         
-        System.out.println("\n============== { RECONHECIMENTO DE IMAGEM } ==============\n");
+        // sai do sistema
+        gerenciadorUsuario.logout();
         
         
         
