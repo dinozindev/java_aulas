@@ -14,6 +14,11 @@ public class GerenciadorRecompensa {
         recompensas.add(recompensa);
         System.out.println("Recompensa adicionada com sucesso.");
     }
+    
+    public void removerRecompensa(Recompensa recompensa) {
+    	recompensas.remove(recompensa);
+    	System.out.println("Recompensa removida com sucesso.");
+    }
 
     public void listarRecompensas() {
     	System.out.println("\n*-* LISTA DE RECOMPENSAS *-*\n");

@@ -6,11 +6,11 @@ public class IlhaLixo {
     private int idIlhaLixo;
     private String coordenadasIlhaLixo;
     private String statusLimpeza;
-    private String tamanhoIlhaLixo;
+    private double tamanhoIlhaLixo;
     private String tipoLixo;
     private ArrayList<Organizacao> organizacoesAssociadas;
 	
-    public IlhaLixo(int idIlhaLixo, String coordenadasIlhaLixo, String statusLimpeza, String tamanhoIlhaLixo, String tipoLixo) {
+    public IlhaLixo(int idIlhaLixo, String coordenadasIlhaLixo, String statusLimpeza, double tamanhoIlhaLixo, String tipoLixo) {
 		this.idIlhaLixo = idIlhaLixo;
 		this.coordenadasIlhaLixo = coordenadasIlhaLixo;
 		this.statusLimpeza = statusLimpeza;
@@ -43,11 +43,11 @@ public class IlhaLixo {
 		this.statusLimpeza = statusLimpeza;
 	}
 
-	public String getTamanhoIlhaLixo() {
+	public double getTamanhoIlhaLixo() {
 		return tamanhoIlhaLixo;
 	}
 
-	public void setTamanhoIlhaLixo(String tamanhoIlhaLixo) {
+	public void setTamanhoIlhaLixo(double tamanhoIlhaLixo) {
 		this.tamanhoIlhaLixo = tamanhoIlhaLixo;
 	}
 
@@ -70,7 +70,7 @@ public class IlhaLixo {
 	public void imprimirIlhaLixo() {
 		System.out.println("ID Ilha de Lixo: " + getIdIlhaLixo());
 		System.out.println("Coordenadas: " + getCoordenadasIlhaLixo());
-		System.out.println("Tamanho: " + getTamanhoIlhaLixo());
+		System.out.println("Tamanho: " + getTamanhoIlhaLixo() + "km²");
 		System.out.println("Tipo de Lixo: " + getTipoLixo());
 		System.out.println("Status de Limpeza: " + getStatusLimpeza() + "\n");
 	}

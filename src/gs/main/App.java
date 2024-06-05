@@ -78,9 +78,9 @@ public class App {
         
         System.out.println("============== { ILHAS DE LIXO } ==============\n");
         
-        IlhaLixo il1 = new IlhaLixo(4001, "25.0343°N, 71.4467°W", "Em andamento", "Grande", "Plástico");
-        IlhaLixo il2 = new IlhaLixo(4002, "0.8250°S, 91.1347°W", "Finalizando", "Média", "Plástico e Metais");
-        IlhaLixo il3 = new IlhaLixo(4003, "40.7650°N, 76.4532°W", "Em andamento", "Pequena", "Plástico");
+        IlhaLixo il1 = new IlhaLixo(4001, "25.0343°N, 71.4467°W", "Em andamento", 120000, "Plástico");
+        IlhaLixo il2 = new IlhaLixo(4002, "0.8250°S, 91.1347°W", "Finalizando", 1600000, "Plástico e Metais");
+        IlhaLixo il3 = new IlhaLixo(4003, "40.7650°N, 76.4532°W", "Em andamento", 50000, "Plástico");
         
         System.out.println("*-* Adicionando ilhas de lixo a lista *-*\n");
         gerenciadorIlhaLixo.adicionarIlha(il1);
