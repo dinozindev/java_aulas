@@ -40,4 +40,5 @@ public abstract class Veiculo {
 	}
 	
 	public abstract void exibirDados();
+
 }
