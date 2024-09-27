@@ -11,7 +11,7 @@ public class Veiculo {
     	
     }
 
-    public Veiculo(String marca, String modelo, int ano, String placa, double quilometragem) {
+    public Veiculo(String marca, String modelo,String placa, int ano, double quilometragem) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
