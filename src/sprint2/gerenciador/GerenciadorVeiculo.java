@@ -80,7 +80,7 @@ public class GerenciadorVeiculo {
         		System.out.println("Digite uma quilometragem válida.");
         	}  
         }
-        Veiculo veiculo = new Veiculo(marca, modelo, anoConvertido, placa, quilometragem);
+        Veiculo veiculo = new Veiculo(marca, modelo, placa, anoConvertido,  quilometragem);
         veiculosTotais.add(veiculo);
         System.out.println("\nVeículo criado com sucesso!");
         return veiculo;
